@@ -1,0 +1,207 @@
+{
+  "id": "AOF-DEMO",
+  "modulo": "AOF",
+  "codigo": "DEMO",
+  "titulo": "Un documento para compartir · demostración ficticia",
+  "orden": 1,
+  "formato": 2,
+  "fuentes": [
+    {
+      "id": "demo-propia",
+      "titulo": "Contenido original de demostración — kudofanboy (CC BY 4.0)",
+      "ruta": "docs/DEMO-CONTENT.md",
+      "localizador": "apartado"
+    }
+  ],
+  "glosario": [],
+  "conceptos": [
+    {
+      "id": "demo-documento",
+      "nombre": "Editar y exportar",
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 6
+      },
+      "nivel_verdad": "simplificacion",
+      "requiere": [],
+      "objetivo": "Aplicar la idea de editar y exportar a un caso pequeño.",
+      "descubrir": [
+        {
+          "tipo": "idea",
+          "titulo": "Editar y exportar",
+          "texto": "Un archivo editable conserva la estructura necesaria para seguir trabajando en su aplicación. Exportar a PDF crea una copia orientada a compartir una presentación estable. Guarda el original editable si piensas hacer cambios después.",
+          "visual": {
+            "tipo": "emoji",
+            "emoji": "📄"
+          }
+        },
+        {
+          "tipo": "pregunta",
+          "pregunta": "Quieres compartir una copia y seguir corrigiendo el original. ¿Qué conservas?",
+          "opciones": [
+            "Solo una captura de pantalla",
+            "El editable y la copia exportada"
+          ],
+          "correcta": 1,
+          "revelacion": "El original editable permite continuar el trabajo; la copia exportada sirve para compartir la versión que has revisado."
+        }
+      ],
+      "clave": [
+        "Un archivo editable conserva la estructura necesaria para seguir trabajando en su aplicación. Exportar a PDF crea una copia orientada a compartir una presentación estable. Guarda el original editable si piensas hacer cambios después.",
+        "El original editable permite continuar el trabajo; la copia exportada sirve para compartir la versión que has revisado."
+      ],
+      "verificado": true
+    }
+  ],
+  "ejercicios": [
+    {
+      "id": "demo-aof-ordena",
+      "conceptos": [
+        "demo-documento"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 6
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "ordenar",
+      "enunciado": "Ordena una entrega de ejemplo conservando el original.",
+      "pasos": [
+        "Guardar el documento editable",
+        "Exportar una copia a PDF",
+        "Abrir y revisar el PDF exportado",
+        "Compartir la copia revisada"
+      ],
+      "explicacion": "Guardar conserva el trabajo; exportar crea la copia y revisarla permite detectar errores antes de compartirla con otra persona."
+    },
+    {
+      "id": "demo-aof-vf",
+      "conceptos": [
+        "demo-documento"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 6
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "vf",
+      "afirmacion": "Conservar el editable facilita modificar el documento más adelante.",
+      "verdadero": true,
+      "explicacion": "El formato editable mantiene la estructura de trabajo de la aplicación. Conservarlo evita depender solo de una copia de distribución."
+    },
+    {
+      "id": "demo-aof-test",
+      "conceptos": [
+        "demo-documento"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 6
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "test",
+      "enunciado": "Al exportar cambia un salto de página. ¿Qué acción detecta el problema?",
+      "opciones": [
+        "Revisar el archivo exportado",
+        "Confiar en el nombre del archivo"
+      ],
+      "correcta": 0,
+      "explicacion": "La revisión debe abrir la copia exportada: su nombre no permite comprobar saltos, imágenes ni la distribución real del contenido."
+    }
+  ],
+  "generadores": [],
+  "juegos": [
+    {
+      "id": "aof-demo-practica",
+      "titulo": "Práctica demo",
+      "descripcion": "Actividades originales; no corresponde a un curso real.",
+      "tipo": "practica",
+      "preguntas": 5
+    },
+    {
+      "id": "aof-demo-reto",
+      "titulo": "Reto demo",
+      "descripcion": "Tres decisiones sin relación con evaluaciones reales.",
+      "tipo": "examen",
+      "preguntas": 3,
+      "tiempo": 180
+    }
+  ],
+  "encargos": [
+    {
+      "id": "demo-oficina-documento",
+      "cliente": {
+        "nombre": "Cliente Demo (ficticio)",
+        "empresa": "Oficina Nube de Papel (ficticia)"
+      },
+      "asunto": "Compartir una hoja informativa ficticia",
+      "mensaje": "Este cliente y su oficina son ficticios. Resuelve el modelo después de estudiar las explicaciones.",
+      "verificado": true,
+      "pasos": [
+        {
+          "titulo": "Conservar el trabajo",
+          "mensaje": "Situación inventada para aprender; no modifica equipos reales.",
+          "conceptos": [
+            "demo-documento"
+          ],
+          "fuente": {
+            "doc": "demo-propia",
+            "pag": 6
+          },
+          "nivel_verdad": "simplificacion",
+          "verificado": true,
+          "explicacion": "La oficina ficticia quiere modificar el texto la semana siguiente y compartir hoy una copia. Conserva un archivo para cada propósito.",
+          "opciones": [
+            {
+              "texto": "Guardar el editable y exportar la copia",
+              "correcta": true,
+              "consecuencia": "Se puede continuar el trabajo y compartir la copia."
+            },
+            {
+              "texto": "Borrar el editable tras hacer una captura",
+              "correcta": false,
+              "consecuencia": "La captura pierde la estructura de edición."
+            }
+          ]
+        },
+        {
+          "titulo": "Comprobar la copia",
+          "mensaje": "Situación inventada para aprender; no modifica equipos reales.",
+          "conceptos": [
+            "demo-documento"
+          ],
+          "fuente": {
+            "doc": "demo-propia",
+            "pag": 6
+          },
+          "nivel_verdad": "simplificacion",
+          "verificado": true,
+          "explicacion": "La conversión puede alterar el aspecto. Abre el resultado y revisa su presentación antes de compartirlo.",
+          "opciones": [
+            {
+              "texto": "Compartir sin abrir el resultado",
+              "correcta": false,
+              "consecuencia": "Quedan sin comprobar posibles fallos de presentación."
+            },
+            {
+              "texto": "Abrir y revisar el PDF exportado",
+              "correcta": true,
+              "consecuencia": "Puedes detectar fallos antes de compartirlo."
+            }
+          ]
+        }
+      ],
+      "valoracion": {
+        "satisfecho": "Has resuelto todas las decisiones del caso ficticio.",
+        "parcial": "Hay decisiones útiles y otras que conviene revisar.",
+        "insatisfecho": "Vuelve a las explicaciones y compara los datos del caso."
+      }
+    }
+  ]
+}

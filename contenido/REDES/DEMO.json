@@ -1,0 +1,451 @@
+{
+  "id": "REDES-DEMO",
+  "modulo": "REDES",
+  "codigo": "DEMO",
+  "titulo": "Una oficina conectada · demostración ficticia",
+  "orden": 1,
+  "formato": 2,
+  "fuentes": [
+    {
+      "id": "demo-propia",
+      "titulo": "Contenido original de demostración — kudofanboy (CC BY 4.0)",
+      "ruta": "docs/DEMO-CONTENT.md",
+      "localizador": "apartado"
+    }
+  ],
+  "glosario": [],
+  "conceptos": [
+    {
+      "id": "demo-conexion",
+      "nombre": "Conexiones en estrella",
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 3
+      },
+      "nivel_verdad": "simplificacion",
+      "requiere": [],
+      "objetivo": "Aplicar la idea de conexiones en estrella a un caso pequeño.",
+      "descubrir": [
+        {
+          "tipo": "idea",
+          "titulo": "Conexiones en estrella",
+          "texto": "En una estrella, cada equipo final se conecta al dispositivo central. En esta demo usamos un switch. El cable de un equipo es independiente de los demás: al desconectarlo, ese equipo queda aislado, pero los otros mantienen sus enlaces.",
+          "visual": {
+            "tipo": "topologia",
+            "escenario": {
+              "topologia": "estrella",
+              "centro": "switch",
+              "equipos": 3
+            }
+          }
+        },
+        {
+          "tipo": "simulador-red",
+          "instruccion": "Caso ficticio: corta un cable y observa qué equipos siguen comunicándose.",
+          "escenario": {
+            "topologia": "estrella",
+            "centro": "switch",
+            "equipos": 3
+          },
+          "modo": "averia"
+        },
+        {
+          "tipo": "pregunta",
+          "pregunta": "Se suelta solo el cable de PC2 y el switch sigue funcionando. ¿Qué enlace se pierde?",
+          "opciones": [
+            "Solo el enlace del PC2",
+            "Los enlaces de todos los PC"
+          ],
+          "correcta": 0,
+          "revelacion": "Cada equipo tiene su cable al centro. El fallo de un cable final no corta los cables de los otros equipos."
+        }
+      ],
+      "clave": [
+        "En una estrella, cada equipo final se conecta al dispositivo central. En esta demo usamos un switch. El cable de un equipo es independiente de los demás: al desconectarlo, ese equipo queda aislado, pero los otros mantienen sus enlaces.",
+        "Cada equipo tiene su cable al centro. El fallo de un cable final no corta los cables de los otros equipos."
+      ],
+      "verificado": true
+    },
+    {
+      "id": "demo-enlace",
+      "nombre": "Observar y comprobar",
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 4
+      },
+      "nivel_verdad": "simplificacion",
+      "requiere": [
+        "demo-conexion"
+      ],
+      "objetivo": "Aplicar la idea de observar y comprobar a un caso pequeño.",
+      "descubrir": [
+        {
+          "tipo": "idea",
+          "titulo": "Observar y comprobar",
+          "texto": "Un piloto de enlace encendido indica que hay un enlace físico en este modelo. No demuestra que todos los servicios funcionen. Para investigar una avería, compara observaciones y pruebas entre equipos antes de elegir una causa.",
+          "visual": {
+            "tipo": "nic"
+          }
+        },
+        {
+          "tipo": "pregunta",
+          "pregunta": "Un piloto está encendido, pero una carpeta no abre. ¿Qué conclusión es prudente?",
+          "opciones": [
+            "La carpeta debe funcionar siempre",
+            "Falta comprobar el servicio de red"
+          ],
+          "correcta": 1,
+          "revelacion": "El enlace físico es una observación parcial. El acceso a una carpeta también depende de la configuración y del servicio."
+        }
+      ],
+      "clave": [
+        "Un piloto de enlace encendido indica que hay un enlace físico en este modelo. No demuestra que todos los servicios funcionen. Para investigar una avería, compara observaciones y pruebas entre equipos antes de elegir una causa.",
+        "El enlace físico es una observación parcial. El acceso a una carpeta también depende de la configuración y del servicio."
+      ],
+      "verificado": true
+    },
+    {
+      "id": "demo-alcance",
+      "nombre": "Una red local",
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 5
+      },
+      "nivel_verdad": "simplificacion",
+      "requiere": [
+        "demo-enlace"
+      ],
+      "objetivo": "Aplicar la idea de una red local a un caso pequeño.",
+      "descubrir": [
+        {
+          "tipo": "idea",
+          "titulo": "Una red local",
+          "texto": "Una LAN conecta dispositivos dentro de una zona local, por ejemplo una pequeña oficina. Puede seguir funcionando para compartir recursos aunque falle su conexión a Internet. El acceso local y la salida a Internet son dos cuestiones diferentes.",
+          "visual": {
+            "tipo": "alcance-redes"
+          }
+        },
+        {
+          "tipo": "pregunta",
+          "pregunta": "Falla la salida a Internet, pero dos equipos conservan su conexión local. ¿Qué puede seguir funcionando?",
+          "opciones": [
+            "Una carpeta compartida local",
+            "Cualquier página web externa"
+          ],
+          "correcta": 0,
+          "revelacion": "Una carpeta servida dentro de la red local no necesita atravesar la conexión a Internet para comunicar esos dos equipos."
+        }
+      ],
+      "clave": [
+        "Una LAN conecta dispositivos dentro de una zona local, por ejemplo una pequeña oficina. Puede seguir funcionando para compartir recursos aunque falle su conexión a Internet. El acceso local y la salida a Internet son dos cuestiones diferentes.",
+        "Una carpeta servida dentro de la red local no necesita atravesar la conexión a Internet para comunicar esos dos equipos."
+      ],
+      "verificado": true
+    }
+  ],
+  "ejercicios": [
+    {
+      "id": "demo-red-conectar",
+      "conceptos": [
+        "demo-conexion"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 3
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "test",
+      "enunciado": "En el modelo de estrella, ¿dónde termina el cable de cada PC?",
+      "opciones": [
+        "En el dispositivo central",
+        "En el siguiente PC de la fila"
+      ],
+      "correcta": 0,
+      "explicacion": "Los equipos finales se unen al centro mediante enlaces separados. Unir cada PC al siguiente describe una estructura diferente."
+    },
+    {
+      "id": "demo-red-cable",
+      "conceptos": [
+        "demo-conexion"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 3
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "vf",
+      "afirmacion": "Cortar un cable final de la estrella corta necesariamente los demás.",
+      "verdadero": false,
+      "explicacion": "Los cables finales son independientes: al retirar uno se aísla su equipo, mientras el centro y los otros enlaces pueden seguir activos."
+    },
+    {
+      "id": "demo-red-piloto",
+      "conceptos": [
+        "demo-enlace"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 4
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "test",
+      "enunciado": "¿Qué permite afirmar un piloto de enlace encendido en esta demo?",
+      "opciones": [
+        "Hay enlace físico con el centro",
+        "La contraseña de la carpeta es válida"
+      ],
+      "correcta": 0,
+      "explicacion": "El piloto informa sobre el enlace físico. No comprueba permisos, contraseñas ni la disponibilidad de una carpeta compartida."
+    },
+    {
+      "id": "demo-red-metodo",
+      "conceptos": [
+        "demo-enlace"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 4
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "ordenar",
+      "enunciado": "Ordena este procedimiento de diagnóstico simplificado.",
+      "pasos": [
+        "Observar los enlaces",
+        "Comparar pruebas entre equipos",
+        "Elegir la causa compatible",
+        "Aplicar la corrección y verificar"
+      ],
+      "explicacion": "Se recoge evidencia antes de elegir una causa; tras actuar se repite una prueba afectada para comprobar si el problema se ha resuelto."
+    },
+    {
+      "id": "demo-red-local",
+      "conceptos": [
+        "demo-alcance"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 5
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "test",
+      "enunciado": "Internet falla. ¿Qué prueba comprueba comunicación dentro de la oficina?",
+      "opciones": [
+        "Abrir una web alojada fuera",
+        "Acceder a un recurso del otro PC"
+      ],
+      "correcta": 1,
+      "explicacion": "Una prueba entre equipos de la oficina investiga el tramo local. Una web externa añade la conexión a Internet y otros sistemas."
+    },
+    {
+      "id": "demo-red-vf-local",
+      "conceptos": [
+        "demo-alcance"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 5
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "vf",
+      "afirmacion": "Una LAN necesita Internet para toda comunicación entre sus equipos.",
+      "verdadero": false,
+      "explicacion": "La red local puede intercambiar datos entre sus equipos sin salir a Internet, siempre que los enlaces y servicios locales funcionen."
+    }
+  ],
+  "generadores": [
+    {
+      "tipo": "red-averia",
+      "conceptos": [
+        "demo-conexion"
+      ],
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 3
+      },
+      "topologias": [
+        "estrella"
+      ],
+      "centros": [
+        "switch"
+      ]
+    }
+  ],
+  "juegos": [
+    {
+      "id": "redes-demo-practica",
+      "titulo": "Práctica demo",
+      "descripcion": "Actividades originales; no corresponde a un curso real.",
+      "tipo": "practica",
+      "preguntas": 5
+    },
+    {
+      "id": "redes-demo-reto",
+      "titulo": "Reto demo",
+      "descripcion": "Tres decisiones sin relación con evaluaciones reales.",
+      "tipo": "examen",
+      "preguntas": 3,
+      "tiempo": 180
+    }
+  ],
+  "encargos": [
+    {
+      "id": "demo-oficina-red",
+      "cliente": {
+        "nombre": "Cliente Demo (ficticio)",
+        "empresa": "Oficina Nube de Papel (ficticia)"
+      },
+      "asunto": "Una conexión para la oficina ficticia",
+      "mensaje": "Este cliente y su oficina son ficticios. Resuelve el modelo después de estudiar las explicaciones.",
+      "verificado": true,
+      "pasos": [
+        {
+          "titulo": "Conectar dos puestos",
+          "mensaje": "Situación inventada para aprender; no modifica equipos reales.",
+          "conceptos": [
+            "demo-conexion"
+          ],
+          "fuente": {
+            "doc": "demo-propia",
+            "pag": 3
+          },
+          "nivel_verdad": "simplificacion",
+          "verificado": true,
+          "explicacion": "En esta estrella cada PC termina en el switch. No hacen falta cables directos entre PC; el tablero representa conexiones conceptuales.",
+          "opciones": [
+            {
+              "texto": "Conexión completa al centro",
+              "correcta": true,
+              "consecuencia": "Los dos PC tienen su enlace al switch.",
+              "valor_taller": 0
+            },
+            {
+              "texto": "Conexión que evita el centro",
+              "correcta": false,
+              "consecuencia": "Un cable entre PC no cumple esta estrella.",
+              "valor_taller": 1
+            },
+            {
+              "texto": "Conexión con enlaces pendientes",
+              "correcta": false,
+              "consecuencia": "Falta al menos uno de los dos cables.",
+              "valor_taller": 2
+            },
+            {
+              "texto": "Conexión con un enlace extra",
+              "correcta": false,
+              "consecuencia": "Hay un enlace que el modelo no pide.",
+              "valor_taller": 3
+            }
+          ],
+          "tablero": {
+            "tipo": "conectar",
+            "instruccion": "Oficina inventada: une cada PC al switch.",
+            "centro": "SW",
+            "nodos": [
+              {
+                "id": "SW",
+                "etiqueta": "Switch demo",
+                "clase": "switch",
+                "x": 300,
+                "y": 160
+              },
+              {
+                "id": "PC1",
+                "etiqueta": "PC1",
+                "clase": "pc",
+                "x": 100,
+                "y": 280
+              },
+              {
+                "id": "PC2",
+                "etiqueta": "PC2",
+                "clase": "pc",
+                "x": 500,
+                "y": 280
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "Investigar una pérdida de enlace",
+          "mensaje": "Situación inventada para aprender; no modifica equipos reales.",
+          "conceptos": [
+            "demo-enlace"
+          ],
+          "fuente": {
+            "doc": "demo-propia",
+            "pag": 4
+          },
+          "nivel_verdad": "simplificacion",
+          "verificado": true,
+          "explicacion": "En este modelo, el cable de un PC controla su propio piloto. Compara PC1 con PC3 y después incluye PC2: una causa debe explicar los resultados y los pilotos.",
+          "opciones": [
+            {
+              "texto": "El switch central está averiado",
+              "correcta": false,
+              "consecuencia": "Un fallo del centro apagaría todos los enlaces.",
+              "valor_taller": 0
+            },
+            {
+              "texto": "El cable de PC2 está averiado",
+              "correcta": true,
+              "consecuencia": "Solo PC2 pierde enlace; el resto se comunica.",
+              "valor_taller": 1
+            },
+            {
+              "texto": "El cable de PC1 está averiado",
+              "correcta": false,
+              "consecuencia": "PC1 conserva enlace y se comunica con PC3.",
+              "valor_taller": 2
+            }
+          ],
+          "tablero": {
+            "tipo": "diagnostico",
+            "instruccion": "Caso ficticio: observa los pilotos y compara comunicaciones.",
+            "escenario": {
+              "topologia": "estrella",
+              "centro": "switch",
+              "equipos": 3
+            },
+            "averia": {
+              "tipo": "cable-pc",
+              "pc": "PC2"
+            },
+            "pruebas": 3,
+            "sospechosos": [
+              {
+                "id": "centro",
+                "etiqueta": "Switch central"
+              },
+              {
+                "id": "cable-PC2",
+                "etiqueta": "Cable de PC2"
+              },
+              {
+                "id": "cable-PC1",
+                "etiqueta": "Cable de PC1"
+              }
+            ]
+          }
+        }
+      ],
+      "valoracion": {
+        "satisfecho": "Has resuelto todas las decisiones del caso ficticio.",
+        "parcial": "Hay decisiones útiles y otras que conviene revisar.",
+        "insatisfecho": "Vuelve a las explicaciones y compara los datos del caso."
+      }
+    }
+  ]
+}

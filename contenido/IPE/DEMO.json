@@ -1,0 +1,155 @@
+{
+  "id": "IPE-DEMO",
+  "modulo": "IPE",
+  "codigo": "DEMO",
+  "titulo": "Comunicar una incidencia · demostración ficticia",
+  "orden": 1,
+  "formato": 2,
+  "fuentes": [
+    {
+      "id": "demo-propia",
+      "titulo": "Contenido original de demostración — kudofanboy (CC BY 4.0)",
+      "ruta": "docs/DEMO-CONTENT.md",
+      "localizador": "apartado"
+    }
+  ],
+  "glosario": [],
+  "conceptos": [
+    {
+      "id": "demo-incidencia",
+      "nombre": "Registrar una incidencia",
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 8
+      },
+      "nivel_verdad": "simplificacion",
+      "requiere": [],
+      "objetivo": "Aplicar la idea de registrar una incidencia a un caso pequeño.",
+      "descubrir": [
+        {
+          "tipo": "idea",
+          "titulo": "Registrar una incidencia",
+          "texto": "Una nota de incidencia útil separa lo observado de la hipótesis. Anota qué ocurre, en qué equipo y qué prueba hiciste. Escribe como hipótesis una causa que aún no has comprobado; así otra persona sabe qué está confirmado.",
+          "visual": {
+            "tipo": "emoji",
+            "emoji": "📝"
+          }
+        },
+        {
+          "tipo": "pregunta",
+          "pregunta": "La impresora no responde, pero aún no has probado el cable. ¿Qué frase distingue evidencia e hipótesis?",
+          "opciones": [
+            "No responde; el cable está por comprobar",
+            "No responde; el cable está roto seguro"
+          ],
+          "correcta": 0,
+          "revelacion": "La ausencia de respuesta está observada; el estado del cable sigue siendo una hipótesis hasta contrastarlo."
+        }
+      ],
+      "clave": [
+        "Una nota de incidencia útil separa lo observado de la hipótesis. Anota qué ocurre, en qué equipo y qué prueba hiciste. Escribe como hipótesis una causa que aún no has comprobado; así otra persona sabe qué está confirmado.",
+        "La ausencia de respuesta está observada; el estado del cable sigue siendo una hipótesis hasta contrastarlo."
+      ],
+      "verificado": true
+    }
+  ],
+  "ejercicios": [
+    {
+      "id": "demo-ipe-clasifica",
+      "conceptos": [
+        "demo-incidencia"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 8
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "clasificar",
+      "enunciado": "Distingue observación comprobada e hipótesis pendiente.",
+      "categorias": [
+        {
+          "id": "dato",
+          "nombre": "Dato observado"
+        },
+        {
+          "id": "hipotesis",
+          "nombre": "Hipótesis pendiente"
+        }
+      ],
+      "elementos": [
+        {
+          "texto": "La prueba del PC1 al PC2 falla",
+          "categoria": "dato"
+        },
+        {
+          "texto": "Puede haber un cable suelto",
+          "categoria": "hipotesis"
+        },
+        {
+          "texto": "El piloto del PC2 está apagado",
+          "categoria": "dato"
+        }
+      ],
+      "explicacion": "Una observación describe el resultado de una comprobación. Una hipótesis propone una explicación que todavía necesita pruebas."
+    },
+    {
+      "id": "demo-ipe-test",
+      "conceptos": [
+        "demo-incidencia"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 8
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "test",
+      "enunciado": "¿Qué anotación ayuda más a otra persona a repetir la prueba?",
+      "opciones": [
+        "La red funciona regular desde antes",
+        "PC2 no responde a la prueba de PC1"
+      ],
+      "correcta": 1,
+      "explicacion": "Identificar los equipos y el resultado concreto permite repetir la comprobación; una valoración imprecisa no describe qué se probó."
+    },
+    {
+      "id": "demo-ipe-vf",
+      "conceptos": [
+        "demo-incidencia"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 8
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "vf",
+      "afirmacion": "Una causa posible debe registrarse como segura antes de probarla.",
+      "verdadero": false,
+      "explicacion": "Presentar una hipótesis como hecho puede dirigir el diagnóstico hacia una causa equivocada. Registra qué falta comprobar."
+    }
+  ],
+  "generadores": [],
+  "juegos": [
+    {
+      "id": "ipe-demo-practica",
+      "titulo": "Práctica demo",
+      "descripcion": "Actividades originales; no corresponde a un curso real.",
+      "tipo": "practica",
+      "preguntas": 5
+    },
+    {
+      "id": "ipe-demo-reto",
+      "titulo": "Reto demo",
+      "descripcion": "Tres decisiones sin relación con evaluaciones reales.",
+      "tipo": "examen",
+      "preguntas": 3,
+      "tiempo": 180
+    }
+  ],
+  "encargos": []
+}

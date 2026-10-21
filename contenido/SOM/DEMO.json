@@ -1,0 +1,144 @@
+{
+  "id": "SOM-DEMO",
+  "modulo": "SOM",
+  "codigo": "DEMO",
+  "titulo": "Servicios del sistema · demostración ficticia",
+  "orden": 1,
+  "formato": 2,
+  "fuentes": [
+    {
+      "id": "demo-propia",
+      "titulo": "Contenido original de demostración — kudofanboy (CC BY 4.0)",
+      "ruta": "docs/DEMO-CONTENT.md",
+      "localizador": "apartado"
+    }
+  ],
+  "glosario": [],
+  "conceptos": [
+    {
+      "id": "demo-sistema",
+      "nombre": "El sistema operativo",
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 2
+      },
+      "nivel_verdad": "simplificacion",
+      "requiere": [],
+      "objetivo": "Aplicar la idea de el sistema operativo a un caso pequeño.",
+      "descubrir": [
+        {
+          "tipo": "idea",
+          "titulo": "El sistema operativo",
+          "texto": "El sistema operativo gestiona recursos del equipo y ofrece servicios a las aplicaciones. Una aplicación pide guardar un documento; el sistema coordina el acceso al almacenamiento. No todas las aplicaciones son sistemas operativos.",
+          "visual": {
+            "tipo": "capas-so"
+          }
+        },
+        {
+          "tipo": "pregunta",
+          "pregunta": "Un editor pide guardar un dibujo. ¿Qué parte coordina el acceso al disco?",
+          "opciones": [
+            "El sistema operativo del equipo",
+            "El contenido del propio dibujo"
+          ],
+          "correcta": 0,
+          "revelacion": "El sistema operativo gestiona el acceso al almacenamiento; el dibujo es un dato que la aplicación solicita guardar."
+        }
+      ],
+      "clave": [
+        "El sistema operativo gestiona recursos del equipo y ofrece servicios a las aplicaciones. Una aplicación pide guardar un documento; el sistema coordina el acceso al almacenamiento. No todas las aplicaciones son sistemas operativos.",
+        "El sistema operativo gestiona el acceso al almacenamiento; el dibujo es un dato que la aplicación solicita guardar."
+      ],
+      "verificado": true
+    }
+  ],
+  "ejercicios": [
+    {
+      "id": "demo-som-pares",
+      "conceptos": [
+        "demo-sistema"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 2
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "emparejar",
+      "enunciado": "Relaciona cada elemento con su función en este ejemplo.",
+      "pares": [
+        {
+          "a": "Sistema operativo",
+          "b": "Gestiona recursos y servicios"
+        },
+        {
+          "a": "Editor de dibujos",
+          "b": "Permite crear una imagen"
+        },
+        {
+          "a": "Archivo de imagen",
+          "b": "Conserva el dibujo guardado"
+        }
+      ],
+      "explicacion": "El sistema coordina recursos, la aplicación permite trabajar y el archivo almacena el resultado. Sus funciones son diferentes."
+    },
+    {
+      "id": "demo-som-vf",
+      "conceptos": [
+        "demo-sistema"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 2
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "vf",
+      "afirmacion": "Todos los programas instalados son sistemas operativos.",
+      "verdadero": false,
+      "explicacion": "Una aplicación utiliza servicios del sistema operativo para una tarea concreta, por lo que no se convierte en sistema operativo."
+    },
+    {
+      "id": "demo-som-test",
+      "conceptos": [
+        "demo-sistema"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 2
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "test",
+      "enunciado": "¿Cuál es una tarea del sistema operativo?",
+      "opciones": [
+        "Elegir el color de un dibujo",
+        "Coordinar el uso de la memoria"
+      ],
+      "correcta": 1,
+      "explicacion": "La gestión de memoria es un servicio del sistema. Elegir el color del dibujo es una decisión del usuario dentro de una aplicación."
+    }
+  ],
+  "generadores": [],
+  "juegos": [
+    {
+      "id": "som-demo-practica",
+      "titulo": "Práctica demo",
+      "descripcion": "Actividades originales; no corresponde a un curso real.",
+      "tipo": "practica",
+      "preguntas": 5
+    },
+    {
+      "id": "som-demo-reto",
+      "titulo": "Reto demo",
+      "descripcion": "Tres decisiones sin relación con evaluaciones reales.",
+      "tipo": "examen",
+      "preguntas": 3,
+      "tiempo": 180
+    }
+  ],
+  "encargos": []
+}

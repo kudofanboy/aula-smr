@@ -1,0 +1,752 @@
+/* Tableros interactivos de los encargos: cableado, diagnóstico e ilustraciones de apoyo. */
+
+.tablero {
+  margin: 14px 0 6px;
+  padding: 14px 16px 12px;
+  border: 1px solid var(--m-borde, var(--borde));
+  border-radius: 16px;
+  background:
+    radial-gradient(color-mix(in oklab, var(--m, var(--acento)) 16%, transparent) 1.2px, transparent 1.6px) 0 0 / 22px 22px,
+    var(--superficie-2);
+}
+
+.tablero-instruccion,
+.ilustracion-instruccion {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.tablero-instruccion svg,
+.ilustracion-instruccion svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--m-texto, var(--acento-texto));
+}
+
+.lienzo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  user-select: none;
+}
+
+/* ---- Equipos del cableado ---- */
+.equipo-tablero {
+  cursor: pointer;
+  outline: none;
+}
+
+.equipo-tablero .zona-clic {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  transition: fill 0.15s, stroke 0.15s;
+}
+
+.equipo-tablero:hover .zona-clic,
+.equipo-tablero:focus-visible .zona-clic {
+  fill: color-mix(in oklab, var(--acento) 10%, transparent);
+  stroke: color-mix(in oklab, var(--acento) 50%, transparent);
+}
+
+.equipo-tablero.seleccionado .zona-clic {
+  fill: color-mix(in oklab, var(--acento) 18%, transparent);
+  stroke: var(--acento);
+  stroke-dasharray: 5 4;
+}
+
+.eq rect,
+.eq path {
+  fill: var(--superficie);
+  stroke: var(--texto-3);
+  stroke-width: 2;
+}
+
+.eq .pantalla-eq {
+  fill: color-mix(in oklab, var(--acento) 22%, var(--superficie-3));
+  stroke: none;
+}
+
+.eq .pie,
+.eq .papel,
+.eq .puerto {
+  fill: var(--superficie-3);
+  stroke: var(--borde-fuerte);
+  stroke-width: 1.5;
+}
+
+.eq.switch rect:first-child {
+  fill: color-mix(in oklab, var(--acento) 16%, var(--superficie));
+}
+
+.eq.hub rect:first-child {
+  fill: color-mix(in oklab, var(--aviso) 18%, var(--superficie));
+}
+
+.eq.router rect {
+  fill: color-mix(in oklab, var(--violeta) 14%, var(--superficie));
+}
+
+.eq .antena {
+  stroke: var(--texto-3);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.eq .mini-led {
+  fill: var(--ok);
+  stroke: none;
+}
+
+.eq.internet path {
+  fill: color-mix(in oklab, var(--acento) 12%, var(--superficie));
+}
+
+.etiqueta-eq {
+  font-family: var(--f-texto);
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--texto);
+  pointer-events: none;
+}
+
+/* Piloto de enlace (también se usa sobre el dibujo de red del diagnóstico) */
+.piloto {
+  stroke-width: 1.5;
+  transition: fill 0.2s;
+}
+
+.piloto.on {
+  fill: var(--ok);
+  stroke: color-mix(in oklab, var(--ok) 60%, var(--texto));
+  filter: drop-shadow(0 0 4px color-mix(in oklab, var(--ok) 80%, transparent));
+}
+
+.piloto.off {
+  fill: var(--superficie-3);
+  stroke: var(--texto-3);
+}
+
+/* Cables */
+.cable-tablero {
+  cursor: pointer;
+}
+
+.cable-linea {
+  stroke: var(--texto-2);
+  stroke-width: 4;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.cable-hit {
+  stroke: transparent;
+  stroke-width: 16;
+}
+
+.cable-tablero:hover .cable-linea {
+  stroke: var(--ko);
+  stroke-dasharray: 6 6;
+}
+
+.tablero-barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-top: 4px;
+}
+
+.tablero-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--texto-2);
+}
+
+.tablero-estado svg {
+  color: var(--ok);
+}
+
+.tablero-acciones {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+/* ---- Diagnóstico ---- */
+.herramientas-diagnostico {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.herramientas-diagnostico .btn.activo {
+  border-color: var(--acento);
+  background: var(--acento-suave);
+  color: var(--acento-texto);
+}
+
+.contador-pruebas {
+  margin-left: 4px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--superficie-3);
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+}
+
+.registro-pruebas {
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.registro-pruebas li {
+  padding: 5px 12px;
+  border-radius: 9px;
+  font-family: var(--f-mono);
+  font-size: 0.86rem;
+}
+
+.registro-pruebas li.ok {
+  background: var(--ok-suave);
+  color: var(--ok-texto);
+}
+
+.registro-pruebas li.ko {
+  background: var(--ko-suave);
+  color: var(--ko-texto);
+}
+
+.causas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 12px 0 0;
+  border: none;
+  border-top: 1px dashed var(--borde-fuerte);
+}
+
+.causas legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px 0 0;
+  font-weight: 700;
+}
+
+.causas .opcion {
+  width: 100%;
+}
+
+/* ---- Ilustraciones ---- */
+.ilustracion-pilotos {
+  display: grid;
+  gap: 4px;
+  margin: 8px 0 14px;
+  padding: 8px 14px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  background: var(--superficie-2);
+}
+
+.ilustracion-pilotos .dibujo {
+  max-height: 220px;
+}
+
+.ilustracion-pilotos figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.92rem;
+}
+
+.ilustracion-pilotos figcaption em {
+  color: var(--texto-3);
+}
+
+.led-leyenda {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-right: 6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--texto-3);
+  background: var(--superficie-3);
+}
+
+.led-leyenda.on {
+  background: var(--ok);
+  border-color: color-mix(in oklab, var(--ok) 60%, var(--texto));
+}
+
+.led-leyenda.parpadeo {
+  animation: parpadeo 1s ease-in-out infinite;
+}
+
+.led.off circle {
+  fill: var(--superficie-3);
+  stroke: var(--texto-3);
+  stroke-width: 2;
+}
+
+.ilustracion-simulador {
+  margin: 8px 0 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  background: var(--superficie-2);
+}
+
+.pestanas-sim {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0 6px;
+}
+
+.pestanas-sim button {
+  padding: 6px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: var(--superficie);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pestanas-sim button.activa {
+  border-color: var(--acento);
+  background: var(--acento-suave);
+  color: var(--acento-texto);
+}
+
+/* ---- Máquina virtual ---- */
+.datos-host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  background: var(--superficie);
+  font-size: 0.92rem;
+}
+
+.datos-host span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.datos-host svg {
+  color: var(--m-texto, var(--acento-texto));
+}
+
+.rejilla-maquina {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.controles-vm,
+.resumen-vm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.controles-vm fieldset,
+.redes-vm {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  background: var(--superficie);
+}
+
+.controles-vm legend,
+.redes-vm legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.chips-vm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chips-vm.tipo {
+  margin-top: 8px;
+}
+
+.chips-vm button,
+.tarjetas-red button {
+  padding: 6px 13px;
+  border: 1.5px solid var(--borde-fuerte);
+  border-radius: 999px;
+  background: var(--superficie);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.chips-vm button:hover:not(:disabled),
+.tarjetas-red button:hover:not(:disabled) {
+  border-color: var(--acento);
+}
+
+.chips-vm button.activo,
+.tarjetas-red button.activo {
+  border-color: var(--acento);
+  background: var(--acento-suave);
+  color: var(--acento-texto);
+}
+
+.controles-vm small {
+  display: block;
+  margin-top: 6px;
+  color: var(--texto-3);
+  font-size: 0.82rem;
+}
+
+.barra-recurso {
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  background: var(--superficie);
+}
+
+.br-cabecera {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+}
+
+.br-cabecera span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.br-pista {
+  position: relative;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--superficie-3);
+  overflow: hidden;
+}
+
+.br-vm {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--m, var(--acento));
+  border-radius: inherit;
+  transition: width 0.25s ease;
+}
+
+.br-hueco {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(135deg, color-mix(in oklab, var(--m, var(--acento)) 55%, transparent) 0 5px, transparent 5px 10px);
+  transition: left 0.25s ease, width 0.25s ease;
+}
+
+.barra-recurso small {
+  display: block;
+  margin-top: 5px;
+  color: var(--texto-3);
+  font-size: 0.8rem;
+}
+
+.redes-vm {
+  margin-top: 12px;
+}
+
+.tarjetas-red {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.tarjetas-red button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.tarjetas-red small {
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--texto-2);
+}
+
+.alcance-vm {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 12px;
+}
+
+.esquema-red {
+  width: 100%;
+  height: auto;
+}
+
+.enlace-vm {
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.enlace-vm.si {
+  stroke: var(--ok);
+}
+
+.enlace-vm.no {
+  stroke: var(--ko);
+  stroke-dasharray: 7 7;
+  opacity: 0.55;
+}
+
+.enlace-vm.nd {
+  stroke: var(--texto-3);
+  stroke-dasharray: 2 6;
+}
+
+.nodo-vm rect {
+  fill: var(--superficie);
+  stroke: var(--texto-3);
+  stroke-width: 2;
+}
+
+.nodo-vm text {
+  font-family: var(--f-texto);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--texto);
+}
+
+.nodo-vm.si rect {
+  stroke: var(--ok);
+}
+
+.nodo-vm.no rect {
+  stroke: var(--ko);
+  opacity: 0.6;
+}
+
+.nodo-vm.yo rect {
+  fill: var(--m-suave, var(--acento-suave));
+  stroke: var(--m, var(--acento));
+  stroke-width: 3;
+}
+
+.marca-vm {
+  font-size: 14px !important;
+}
+
+.nodo-vm.si .marca-vm {
+  fill: var(--ok);
+}
+
+.nodo-vm.no .marca-vm {
+  fill: var(--ko);
+}
+
+.alcance-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alcance-lista li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 9px;
+  font-size: 0.9rem;
+}
+
+.alcance-lista li.si {
+  background: var(--ok-suave);
+  color: var(--ok-texto);
+}
+
+.alcance-lista li.no {
+  background: var(--ko-suave);
+  color: var(--ko-texto);
+}
+
+.alcance-lista li.nd {
+  background: var(--superficie-3);
+  color: var(--texto-2);
+}
+
+@media (max-width: 760px) {
+  .rejilla-maquina,
+  .alcance-vm {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Escena con riesgos (taller) ---- */
+.escena-riesgos {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--borde);
+}
+
+.esc-pared { fill: var(--superficie-2); }
+.esc-suelo { fill: var(--superficie-3); }
+.esc-rodapie { fill: var(--borde-fuerte); }
+.esc-ventana { fill: oklch(0.84 0.07 235); }
+.esc-marco { stroke: oklch(0.98 0.01 235); stroke-width: 4; }
+.esc-marco-ext { fill: none; stroke: var(--texto-3); stroke-width: 5; }
+.esc-luz { fill: oklch(0.96 0.1 95 / 0.22); }
+.esc-mueble { fill: color-mix(in oklab, oklch(0.62 0.08 60) 70%, var(--superficie)); }
+.esc-enchufe { fill: var(--superficie); stroke: var(--texto-3); stroke-width: 2.5; }
+
+.esc-monitor { fill: var(--texto-2); }
+.esc-pantalla { fill: oklch(0.26 0.03 255); }
+.esc-reflejo { fill: oklch(1 0 0 / 0.38); }
+
+.esc-torre { fill: var(--superficie); stroke: var(--texto-3); stroke-width: 3; }
+.esc-led-encendido { fill: var(--ok); }
+.esc-tapa { fill: var(--superficie-3); stroke: var(--texto-3); stroke-width: 3; }
+.esc-placa { fill: color-mix(in oklab, var(--acento) 28%, var(--superficie-3)); stroke: var(--texto-3); stroke-width: 1.5; }
+.esc-cable-corriente { fill: none; stroke: var(--texto-2); stroke-width: 4; stroke-linecap: round; }
+.esc-clavija { fill: var(--texto-2); }
+.esc-rayo { fill: none; stroke: oklch(0.82 0.17 85); stroke-width: 3.2; stroke-linejoin: round; stroke-linecap: round; }
+
+.esc-cable-suelo { fill: none; stroke: var(--texto-2); stroke-width: 5; stroke-linecap: round; }
+.esc-cobre { stroke: oklch(0.72 0.15 55); stroke-width: 2.6; stroke-linecap: round; }
+
+.esc-caja { fill: oklch(0.73 0.08 70); stroke: oklch(0.5 0.08 60); stroke-width: 2; }
+.esc-caja-tapa { fill: oklch(0.65 0.09 65); }
+.esc-cinta { stroke: oklch(0.86 0.05 85); stroke-width: 4; }
+.esc-peso { font-family: var(--f-mono); font-size: 16px; font-weight: 800; fill: oklch(0.28 0.05 60); }
+.esc-peso.pequeno { font-size: 11px; }
+
+.esc-cuadro { fill: var(--superficie-3); stroke: var(--texto-3); stroke-width: 3; }
+.esc-interruptor { fill: var(--superficie); stroke: var(--texto-3); stroke-width: 2; }
+.esc-diferencial { fill: color-mix(in oklab, var(--acento) 22%, var(--superficie)); stroke: var(--acento); stroke-width: 2.5; }
+.esc-texto-cuadro { font-family: var(--f-mono); font-size: 11px; font-weight: 700; fill: var(--texto); }
+.esc-test { fill: var(--aviso); stroke: var(--texto-3); stroke-width: 1.5; }
+
+.elemento-escena { cursor: pointer; outline: none; }
+
+.area-escena {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 3;
+  transition: fill 0.15s, stroke 0.15s;
+}
+
+.elemento-escena:hover .area-escena,
+.elemento-escena:focus-visible .area-escena {
+  stroke: var(--acento);
+  stroke-dasharray: 6 5;
+  fill: color-mix(in oklab, var(--acento) 10%, transparent);
+}
+
+.elemento-escena.marcado .area-escena {
+  stroke: var(--aviso);
+  stroke-dasharray: none;
+  fill: color-mix(in oklab, var(--aviso) 16%, transparent);
+}
+
+.elemento-escena.acierto .area-escena { stroke: var(--ok); stroke-dasharray: none; fill: color-mix(in oklab, var(--ok) 12%, transparent); }
+.elemento-escena.fallo .area-escena { stroke: var(--ko); stroke-dasharray: 6 5; fill: color-mix(in oklab, var(--ko) 12%, transparent); }
+
+.etiqueta-escena {
+  font-family: var(--f-texto);
+  font-size: 12.5px;
+  font-weight: 700;
+  fill: var(--texto);
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: var(--superficie-2);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.insignia-escena circle { fill: var(--aviso); stroke: var(--superficie); stroke-width: 2; }
+.insignia-escena text { font-size: 14px; font-weight: 800; fill: oklch(0.2 0.03 60); pointer-events: none; }
+.elemento-escena.acierto .insignia-escena circle { fill: var(--ok); }
+.elemento-escena.fallo .insignia-escena circle { fill: var(--ko); }
+.elemento-escena.acierto .insignia-escena text,
+.elemento-escena.fallo .insignia-escena text { fill: oklch(0.99 0 0); }
+
+.veredicto-escena {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.veredicto-escena li {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.veredicto-escena li.ok { background: var(--ok-suave); color: var(--ok-texto); }
+.veredicto-escena li.ko { background: var(--ko-suave); color: var(--ko-texto); }
+
+/* Marca del límite en las barras de la máquina virtual */
+.br-limite {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 3px;
+  margin-left: -1px;
+  border-radius: 2px;
+  background: var(--aviso);
+  box-shadow: 0 0 0 1px var(--superficie);
+}
+
+/* En pantallas estrechas el dibujo se reduce: se agrandan las letras para que sigan leyéndose */
+@media (max-width: 760px) {
+  .etiqueta-eq { font-size: 22px; }
+  .etiqueta-escena { font-size: 20px; stroke-width: 5px; }
+  .t-nodo { font-size: 18px; }
+  .nodo-vm text { font-size: 15px; }
+  .esc-peso { font-size: 20px; }
+}

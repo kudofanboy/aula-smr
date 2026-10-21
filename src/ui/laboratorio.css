@@ -1,0 +1,78 @@
+.laboratorio, .lab-presentacion { border-top: 4px solid var(--m, var(--acento)); margin-bottom: 24px; }
+.lab-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.lab-cabecera h2 { margin: 4px 0 20px; }
+.lab-fases { padding: 0; display: flex; gap: 10px; list-style: none; margin: 0 0 24px; }
+.lab-fases li { flex: 1; display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px; color: var(--texto-2); background: var(--superficie-2); font-size: .85rem; }
+.lab-fases span { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid var(--borde-fuerte); border-radius: 50%; flex-shrink: 0; }
+.lab-fases .actual { background: color-mix(in oklab, var(--acento) 12%, var(--superficie)); color: var(--acento-texto); font-weight: 700; }
+.lab-fases .hecho span { background: var(--ok); color: var(--superficie); border: 0; }
+.lab-rejilla { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(220px, 1fr); gap: 24px; align-items: start; }
+.lab-red { min-width: 0; padding: 16px; border: 1px solid var(--borde); border-radius: 16px; background: var(--superficie-2); }
+.lab-red > p:first-child { margin: 0; color: var(--texto-2); font-size: .85rem; }
+.lab-instruccion { padding: 12px; border-radius: 10px; background: var(--superficie); min-height: 3.8em; }
+.lab-prueba-movil { display: none; }
+.lab-cuaderno { border-left: 1px solid var(--borde); padding-left: 20px; }
+.lab-cuaderno h3 { margin: 0 0 16px; }
+.lab-cuaderno ol { padding: 0; list-style: none; display: grid; gap: 10px; }
+.lab-cuaderno li { display: grid; gap: 3px; padding: 10px 12px; border-radius: 10px; background: var(--superficie-2); border-left: 3px solid var(--ko); animation: lab-prueba 180ms ease-out; }
+.lab-cuaderno li.ok { border-color: var(--ok); }
+.lab-cuaderno li span, .lab-cuaderno small { color: var(--texto-2); font-size: .78rem; }
+.lab-decision { margin-top: 26px; border-top: 1px solid var(--borde); padding-top: 20px; }
+.lab-decision fieldset { border: 0; padding: 0; margin: 0 0 24px; min-width: 0; }
+.lab-decision legend { margin-bottom: 12px; font-weight: 700; }
+.lab-opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.lab-cierre { padding: 22px; margin: 24px 0; background: var(--superficie-2); border-radius: 14px; border-left: 4px solid var(--acento); }
+.lab-cierre.bien { border-color: var(--ok); }
+.lab-pista { border-left: 3px solid var(--aviso); padding-left: 14px; }
+.lab-aviso { border-left: 3px solid var(--aviso); padding: 12px 16px; background: var(--superficie-2); border-radius: 8px; }
+.laboratorio p, .lab-presentacion p { line-height: 1.65; }
+.caso-original > summary { cursor: pointer; padding: 16px 0; font-weight: 700; }
+.lab-estado-tarjeta { border-left: 3px solid var(--acento); padding: 10px 14px; background: var(--superficie-2); }
+@keyframes lab-prueba { from { opacity: 0; transform: translateX(6px); } }
+@media (max-width: 700px) { .lab-rejilla { grid-template-columns: 1fr; gap: 16px; } .lab-cuaderno { border: 0; padding: 0; } .lab-cuaderno ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } .lab-fases li { flex-direction: column; text-align: center; padding: 10px 6px; font-size: .75rem; } .lab-opciones { grid-template-columns: 1fr; } .lab-red { padding: 10px; } .lab-prueba-movil { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; } .lab-prueba-movil label { display: grid; gap: 6px; font-size: .85rem; } .lab-prueba-movil select { width: 100%; min-height: 44px; border: 1px solid var(--borde-fuerte); border-radius: 8px; padding: 8px; background: var(--superficie); color: var(--texto); font: inherit; } .lab-prueba-movil button, .lab-prueba-movil small { grid-column: 1 / -1; } }
+@media (prefers-reduced-motion: reduce) { .lab-cuaderno li { animation: none; } }
+[data-animaciones='no'] .lab-cuaderno li { animation: none; }
+
+/* ---------- Esquema del laboratorio ---------- */
+.lab-dibujo { margin: 10px 0 4px; }
+.lab-esquema { max-height: none; overflow: visible; }
+.lab-esquema.vertical { display: none; max-width: 380px; margin: 0 auto; }
+@media (max-width: 700px) { .lab-esquema.horizontal { display: none; } .lab-esquema.vertical { display: block; } }
+.lab-planta rect { fill: color-mix(in oklab, var(--m, var(--acento)) 6%, var(--superficie)); stroke: color-mix(in oklab, var(--m, var(--acento)) 30%, var(--borde)); stroke-width: 1.5; stroke-dasharray: 7 5; }
+.t-planta { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; fill: var(--m-texto, var(--acento-texto)); }
+.lab-cable { stroke: var(--texto-3); stroke-width: 3.5; stroke-linecap: round; }
+.lab-switch .sw-cuerpo { fill: var(--superficie-3); stroke: var(--texto-2); stroke-width: 2; }
+.lab-switch.raiz .sw-cuerpo { fill: color-mix(in oklab, var(--m, var(--acento)) 18%, var(--superficie-2)); stroke: var(--m-texto, var(--acento-texto)); }
+.lab-switch .sw-puerto { fill: var(--texto-3); }
+.lab-switch .sw-led { fill: var(--texto-3); }
+.t-switch { font-size: 15px; font-weight: 700; fill: var(--texto); }
+.lab-pc .pc-zona { fill: transparent; stroke: transparent; stroke-width: 3; }
+.lab-pc .pc-monitor { fill: var(--superficie-3); stroke: var(--texto-2); stroke-width: 2; stroke-linejoin: round; }
+.lab-pc .pc-pantalla { fill: color-mix(in oklab, var(--m, var(--acento)) 22%, var(--superficie)); }
+.t-pc { font-family: var(--f-mono); font-size: 17px; font-weight: 800; fill: var(--texto); }
+.lab-pc.pulsable { cursor: pointer; }
+.lab-pc.pulsable:hover .pc-zona { fill: color-mix(in oklab, var(--acento) 8%, transparent); stroke: color-mix(in oklab, var(--acento) 40%, transparent); }
+.lab-pc:focus { outline: none; }
+.lab-pc:focus-visible .pc-zona { stroke: var(--texto); stroke-dasharray: 5 4; }
+.lab-pc.origen .pc-zona { fill: color-mix(in oklab, var(--acento) 14%, transparent); stroke: var(--acento); }
+.lab-pc.origen .pc-monitor { stroke: var(--acento-texto); stroke-width: 3; }
+.lab-pc.probado .pc-zona { stroke: color-mix(in oklab, var(--texto-2) 70%, transparent); stroke-dasharray: 6 5; }
+.pc-rol rect { fill: var(--acento); }
+.pc-rol text { font-size: 12px; font-weight: 800; fill: var(--sobre-acento); }
+.lab-pc.probado .pc-rol rect { fill: var(--texto-2); }
+.lab-pc.probado .pc-rol text { fill: var(--superficie); }
+/* Piloto: encendido relleno y con halo; apagado hueco con trazo discontinuo (no depende solo del color). */
+.lab-esquema .piloto { stroke-width: 2; }
+.lab-esquema .piloto.on { fill: var(--ok); stroke: color-mix(in oklab, var(--ok) 55%, var(--texto)); filter: drop-shadow(0 0 4px color-mix(in oklab, var(--ok) 80%, transparent)); }
+.lab-esquema .piloto.off { fill: var(--superficie); stroke: var(--texto-2); stroke-dasharray: 3 2.5; }
+
+/* Cuaderno: la última prueba destaca con icono y texto; el historial se conserva. */
+.lab-cuaderno-vacio { padding: 14px; border: 1.5px dashed var(--borde-fuerte); border-radius: 12px; color: var(--texto-2); }
+.lab-resultado { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: .88rem !important; }
+.lab-cuaderno li.ok .lab-resultado { color: var(--ok-texto); }
+.lab-cuaderno li.ko .lab-resultado { color: var(--ko-texto); }
+.lab-cuaderno li.ultima { padding: 12px 14px; background: var(--superficie); box-shadow: 0 0 0 1.5px var(--borde-fuerte), var(--sombra); border-left-width: 5px; }
+.lab-cuaderno li.ultima b { font-size: 1.1rem; }
+.lab-resultado { align-items: flex-start; }
+.lab-resultado svg { flex: none; margin-top: 1px; }
+@media (max-width: 700px) { .lab-cuaderno li.ultima { grid-column: 1 / -1; } }

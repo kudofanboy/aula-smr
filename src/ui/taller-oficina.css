@@ -1,0 +1,121 @@
+.taller-oficina {
+  --to-madera: #c8a078;
+  --to-madera-luz: #dfbb91;
+  --to-madera-sombra: #99704d;
+  --to-metal: #617789;
+  --to-pantalla: #173e50;
+  --to-acento: #d4a34f;
+  --to-muro-arriba: color-mix(in oklab, var(--superficie) 82%, #d8c7b0);
+  --to-muro-abajo: color-mix(in oklab, var(--superficie-2) 82%, #bba991);
+  --to-suelo-arriba: color-mix(in oklab, var(--superficie-2) 78%, #d4c7b4);
+  --to-suelo-abajo: color-mix(in oklab, var(--superficie-3) 82%, #ad9a82);
+  overflow: hidden;
+  margin: 22px 0;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 22px;
+  box-shadow: var(--sombra);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, .82fr);
+  align-items: center;
+}
+.taller-oficina > header { grid-column: 1 / -1; padding: 18px 24px 0; }
+.to-kicker { color: var(--acento-texto); font: 800 .7rem var(--f-mono); letter-spacing: .11em; }
+.taller-oficina h3 { margin: 0; }
+.taller-oficina header p { max-width: 630px; margin: 5px 0 0; color: var(--texto-2); }
+.to-sr-only, .to-descripcion-escena { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.to-escena { grid-column: 1; min-width: 0; position: relative; margin: 12px 0 16px 16px; overflow: hidden; border: 1px solid var(--borde); border-radius: 16px; background: radial-gradient(ellipse at 52% 40%, var(--superficie) 0%, var(--superficie-2) 86%); }
+.to-escena::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(108deg, transparent 58%, color-mix(in oklab, var(--to-acento) 7%, transparent)); }
+.to-escena svg { display: block; width: 100%; height: auto; }
+.to-suelo { fill: url(#to-floor); stroke: color-mix(in oklab, var(--to-madera-sombra) 25%, var(--borde-fuerte)); stroke-width: 1.5; }
+.to-juntas { fill: none; stroke: color-mix(in oklab, var(--texto-3) 21%, transparent); stroke-width: 1; }
+.to-pared { fill: url(#to-wall); stroke: color-mix(in oklab, var(--texto-3) 28%, var(--borde-fuerte)); stroke-width: 1.5; }
+.to-zocalo { fill: none; stroke: color-mix(in oklab, var(--to-madera-sombra) 58%, var(--texto-3)); stroke-width: 3; }
+.to-ventanas path { fill: color-mix(in oklab, #9fc6d4 44%, var(--superficie)); stroke: color-mix(in oklab, var(--to-metal) 80%, var(--borde-fuerte)); stroke-width: 2; }
+.to-caja-lado-x { fill: var(--to-madera-sombra); stroke: color-mix(in oklab, var(--to-madera-sombra) 70%, #47372b); stroke-width: 1; }
+.to-caja-lado-y { fill: color-mix(in oklab, var(--to-madera) 69%, var(--to-madera-sombra)); stroke: color-mix(in oklab, var(--to-madera-sombra) 70%, #47372b); stroke-width: 1; }
+.to-caja-tapa { fill: var(--to-madera); stroke: color-mix(in oklab, var(--to-madera-sombra) 67%, #47372b); stroke-width: 1; }
+.to-pata .to-caja-lado-x, .to-pata-silla .to-caja-lado-x { fill: var(--to-madera-sombra); }
+.to-pata .to-caja-tapa, .to-pata-silla .to-caja-tapa { fill: var(--to-madera); }
+.to-silla .to-caja-lado-x, .to-silla .to-caja-lado-y { fill: color-mix(in oklab, var(--to-metal) 58%, var(--superficie-2)); stroke: color-mix(in oklab, var(--to-metal) 75%, var(--texto)); }
+.to-silla .to-caja-tapa { fill: color-mix(in oklab, var(--to-metal) 42%, var(--superficie)); stroke: color-mix(in oklab, var(--to-metal) 75%, var(--texto)); }
+.to-pie-monitor .to-caja-lado-x, .to-base-monitor .to-caja-lado-x, .to-carcasa-monitor .to-caja-lado-x,
+.to-carcasa-impresora .to-caja-lado-x { fill: color-mix(in oklab, var(--to-metal) 75%, #33424a); }
+.to-pie-monitor .to-caja-lado-y, .to-base-monitor .to-caja-lado-y, .to-carcasa-monitor .to-caja-lado-y,
+.to-carcasa-impresora .to-caja-lado-y { fill: color-mix(in oklab, var(--to-metal) 54%, #34454d); }
+.to-pie-monitor .to-caja-tapa, .to-base-monitor .to-caja-tapa, .to-carcasa-monitor .to-caja-tapa,
+.to-carcasa-impresora .to-caja-tapa { fill: #748a98; }.to-archivo .to-caja-lado-x { fill: color-mix(in oklab, var(--to-metal) 66%, #263a46); }.to-archivo .to-caja-lado-y { fill: color-mix(in oklab, var(--to-metal) 48%, #34454d); }.to-archivo .to-caja-tapa { fill: #8295a0; }.to-puertas-archivo, .to-tiradores-archivo { fill: none; stroke: #405661; stroke-width: 1.5; }
+.to-pantalla { fill: var(--to-pantalla); stroke: color-mix(in oklab, #c7d6d9 60%, var(--to-metal)); stroke-width: 2; }
+.to-ui-pantalla { fill: none; stroke: color-mix(in oklab, #c7d6d9 46%, var(--to-pantalla)); stroke-width: 1.6; }
+.to-teclado .to-caja-lado-x, .to-teclado .to-caja-lado-y { fill: #50616a; }
+.to-teclado .to-caja-tapa { fill: #788892; }
+.to-teclas { fill: none; stroke: #d3d9d7; stroke-width: 1.4; stroke-dasharray: 2 2.5; }
+.to-documento, .to-papel-impresora { fill: #f5f1e7; stroke: #998e7c; stroke-width: 1; }
+.to-lineas-documento, .to-lineas-papel { fill: none; stroke: #91a1a4; stroke-width: 1; }
+.to-rotulo { fill: #463626; font: 800 19px var(--f-mono); paint-order: stroke; stroke: var(--to-madera-luz); stroke-width: 5px; stroke-linejoin: round; letter-spacing: .4px; }
+.to-rotulo-imp { fill: #293b43; stroke: #bdcbd0; }
+.to-panel-impresora { fill: #334951; stroke: #1e3036; stroke-width: 1; }
+.to-ranura { fill: none; stroke: #253840; stroke-width: 2; }
+.to-led { fill: #8ecb8b; stroke: #355849; stroke-width: 1; }
+.to-planta path { fill: #6b9669; stroke: #476848; stroke-width: 1.3; }
+.to-planta .to-caja-lado-x, .to-planta .to-caja-lado-y { fill: #b86e52; stroke: #794635; }
+.to-planta .to-caja-tapa { fill: #cd8663; stroke: #794635; }
+.to-cables, .to-usb, .to-alcance { display: none; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.to-cable-red { stroke: color-mix(in oklab, var(--acento) 75%, #776647); stroke-width: 3; stroke-dasharray: 5 8; }
+.to-usb { stroke: color-mix(in oklab, var(--to-metal) 72%, var(--texto-2)); stroke-width: 3; stroke-dasharray: 3 6; }
+.modo-red .to-cable-red, .modo-usb .to-usb { display: block; }
+.to-editor { display: none; }
+.modo-editor .to-documento { fill: #fff4d7; stroke: #c8a65f; }
+.to-alcance { stroke: color-mix(in oklab, var(--acento) 78%, #765b35); stroke-width: 2.5; stroke-dasharray: 5 5; }
+.modo-alcance.alcance-0 .to-local, .modo-alcance.alcance-1 .to-sedes, .modo-alcance.alcance-2 .to-aislados { display: block; }
+.alcance-2 .to-cables, .alcance-2 .to-usb { display: none !important; }
+.to-sedes { stroke-width: 3; stroke-dasharray: none; }
+.to-aislados { display: none; }
+.to-marca { opacity: .96; }
+.to-marca circle { fill: var(--superficie); stroke: var(--to-metal); stroke-width: 2; }
+.to-marca text { fill: var(--to-metal); font: 800 13px var(--f-mono); }
+.to-marca.seleccionado circle { fill: var(--to-acento); stroke: #855f28; }
+.to-marca.seleccionado text { fill: #342b1c; }
+.to-puesto.seleccionado .to-carcasa-monitor .to-caja-tapa { stroke: var(--to-acento); stroke-width: 2; }
+.to-impresora.seleccionado .to-carcasa-impresora .to-caja-tapa { stroke: var(--to-acento); stroke-width: 2; }
+.to-marca-estudio { fill: var(--texto-3); font: 800 13px var(--f-mono); letter-spacing: 3px; }
+.to-reserva { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.to-portatil { fill: color-mix(in oklab, var(--to-metal) 52%, var(--superficie)); stroke: color-mix(in oklab, var(--to-metal) 78%, var(--texto)); stroke-width: 1.5; }
+.to-pantalla-portatil { fill: #294957; stroke: #52636a; stroke-width: 1; }
+.to-cable-reserva { stroke: color-mix(in oklab, var(--texto-2) 78%, var(--to-metal)); stroke-width: 3; }
+.to-reserva .seleccionado .to-portatil { stroke: var(--to-acento); stroke-width: 2.5; }
+.to-reserva .seleccionado .to-marca circle { fill: var(--to-acento); stroke: #855f28; }
+.to-reserva .seleccionado .to-marca text { fill: #342b1c; }
+.to-rotulo-reserva { fill: #33434a; stroke: #e1d4bb; stroke-width: 4px; font-size: 15px; }
+.to-interaccion { grid-column: 2; min-width: 0; padding: 12px 20px 18px 14px; }
+.to-controles { display: grid; grid-template-columns: 1fr; gap: 9px; }
+.to-controles button, .to-inventario button { min-height: 64px; padding: 11px 13px; text-align: left; color: var(--texto); background: var(--superficie-2); border: 1px solid var(--borde); border-radius: 12px; cursor: pointer; transition: transform .16s, border-color .16s, background .16s; }
+.to-controles button:hover:not(:disabled), .to-inventario button:hover:not(:disabled) { transform: translateY(-2px); border-color: var(--acento); }
+.to-controles button.activa, .to-inventario button.activa { background: var(--acento-suave); border-color: var(--acento); }
+.to-controles b, .to-controles small, .to-inventario b, .to-inventario small { display: block; }
+.to-controles b { font-family: var(--f-titulo); }
+.to-controles small, .to-inventario small { margin-top: 3px; color: var(--texto-2); line-height: 1.25; }
+.to-controles button:disabled, .to-inventario button:disabled { cursor: default; opacity: .72; }
+.to-controles button:focus-visible, .to-inventario button:focus-visible { outline: 3px solid var(--acento-texto); outline-offset: 3px; }
+.to-nota { margin: 13px 2px 0; color: var(--texto-3); font-size: .84rem; }
+.to-inventario-cabecera { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; color: var(--texto-2); }
+.to-inventario-cabecera b { color: var(--texto); font: 700 .85rem var(--f-mono); }
+.to-inventario { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.to-inventario button { position: relative; min-height: 92px; padding-left: 38px; }
+.to-inventario .to-estado-elemento { font-size: .72rem; }
+.to-inventario button > span { position: absolute; left: 11px; top: 13px; display: grid; width: 21px; height: 21px; place-items: center; color: var(--texto-3); border: 1px solid var(--borde-fuerte); border-radius: 50%; font-weight: 800; }
+.to-inventario button.activa > span { color: #342b1c; background: var(--to-acento); border-color: #855f28; }
+@media (prefers-reduced-motion: reduce) { .taller-oficina *, .taller-oficina *::before, .taller-oficina *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+@media (max-width: 700px) {
+  .taller-oficina { grid-template-columns: minmax(0, 1fr); }
+  .taller-oficina > header { grid-column: 1; padding: 18px 18px 0; }
+  .to-escena { grid-column: 1; width: calc(100% - 20px); margin: 12px 10px 0; }
+  .to-escena svg { width: 100%; margin: 0; }
+  .to-interaccion { grid-column: 1; padding: 14px 14px 18px; }
+  .to-controles button { min-height: 64px; }
+  .to-inventario { gap: 7px; }
+  .to-inventario button { min-width: 0; padding: 9px 8px 9px 34px; overflow-wrap: anywhere; }
+  .to-inventario button > span { left: 8px; top: 11px; }
+  .to-inventario small { font-size: .78rem; }
+  .to-inventario .to-estado-elemento { font-size: .68rem; }
+}

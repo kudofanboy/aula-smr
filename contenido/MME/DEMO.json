@@ -1,0 +1,159 @@
+{
+  "id": "MME-DEMO",
+  "modulo": "MME",
+  "codigo": "DEMO",
+  "titulo": "Dispositivos y datos · demostración ficticia",
+  "orden": 1,
+  "formato": 2,
+  "fuentes": [
+    {
+      "id": "demo-propia",
+      "titulo": "Contenido original de demostración — kudofanboy (CC BY 4.0)",
+      "ruta": "docs/DEMO-CONTENT.md",
+      "localizador": "apartado"
+    }
+  ],
+  "glosario": [],
+  "conceptos": [
+    {
+      "id": "demo-componentes",
+      "nombre": "Entrada y salida",
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 1
+      },
+      "nivel_verdad": "simplificacion",
+      "requiere": [],
+      "objetivo": "Aplicar la idea de entrada y salida a un caso pequeño.",
+      "descubrir": [
+        {
+          "tipo": "idea",
+          "titulo": "Entrada y salida",
+          "texto": "Un periférico de entrada entrega datos al equipo. Uno de salida muestra o reproduce un resultado. Un dispositivo puede cumplir ambas funciones: una pantalla táctil muestra información y también recoge pulsaciones.",
+          "visual": {
+            "tipo": "emoji",
+            "emoji": "⌨️"
+          }
+        },
+        {
+          "tipo": "pregunta",
+          "pregunta": "Una cámara envía una imagen al ordenador. ¿Qué función realiza?",
+          "opciones": [
+            "Entrega datos de entrada",
+            "Presenta datos de salida"
+          ],
+          "correcta": 0,
+          "revelacion": "La dirección del dato decide la función: la imagen entra al ordenador desde la cámara."
+        }
+      ],
+      "clave": [
+        "Un periférico de entrada entrega datos al equipo. Uno de salida muestra o reproduce un resultado. Un dispositivo puede cumplir ambas funciones: una pantalla táctil muestra información y también recoge pulsaciones.",
+        "La dirección del dato decide la función: la imagen entra al ordenador desde la cámara."
+      ],
+      "verificado": true
+    }
+  ],
+  "ejercicios": [
+    {
+      "id": "demo-mme-clasifica",
+      "conceptos": [
+        "demo-componentes"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 1
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "clasificar",
+      "enunciado": "Clasifica por la dirección principal del dato en este caso.",
+      "categorias": [
+        {
+          "id": "entra",
+          "nombre": "Entrada al equipo"
+        },
+        {
+          "id": "sale",
+          "nombre": "Salida del equipo"
+        }
+      ],
+      "elementos": [
+        {
+          "texto": "Micrófono capturando voz",
+          "categoria": "entra"
+        },
+        {
+          "texto": "Altavoces reproduciendo voz",
+          "categoria": "sale"
+        },
+        {
+          "texto": "Escáner leyendo una hoja",
+          "categoria": "entra"
+        },
+        {
+          "texto": "Monitor mostrando una foto",
+          "categoria": "sale"
+        }
+      ],
+      "explicacion": "El micrófono y el escáner capturan datos; los altavoces y el monitor presentan resultados que salen del equipo."
+    },
+    {
+      "id": "demo-mme-vf",
+      "conceptos": [
+        "demo-componentes"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 1
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "vf",
+      "afirmacion": "Una pantalla táctil puede actuar como entrada y como salida.",
+      "verdadero": true,
+      "explicacion": "Mostrar una imagen es una salida; recoger una pulsación es una entrada. El mismo dispositivo puede realizar las dos funciones."
+    },
+    {
+      "id": "demo-mme-test",
+      "conceptos": [
+        "demo-componentes"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 1
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "test",
+      "enunciado": "El equipo envía un documento a una impresora. ¿Qué representa ese uso?",
+      "opciones": [
+        "Una operación de entrada",
+        "Una operación de salida"
+      ],
+      "correcta": 1,
+      "explicacion": "El documento sale del ordenador y la impresora lo presenta en papel; por eso, en este uso, se clasifica como salida."
+    }
+  ],
+  "generadores": [],
+  "juegos": [
+    {
+      "id": "mme-demo-practica",
+      "titulo": "Práctica demo",
+      "descripcion": "Actividades originales; no corresponde a un curso real.",
+      "tipo": "practica",
+      "preguntas": 5
+    },
+    {
+      "id": "mme-demo-reto",
+      "titulo": "Reto demo",
+      "descripcion": "Tres decisiones sin relación con evaluaciones reales.",
+      "tipo": "examen",
+      "preguntas": 3,
+      "tiempo": 180
+    }
+  ],
+  "encargos": []
+}

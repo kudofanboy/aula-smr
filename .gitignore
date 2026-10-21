@@ -1,0 +1,27 @@
+# Installed dependencies and generated artifacts
+node_modules/
+dist/
+web/
+compartir/
+coverage/
+output/
+datos/
+*.tsbuildinfo
+
+# Local configuration, credentials, logs and personal exports
+.env
+.env.*
+!.env.example
+.npmrc
+*.log
+*.local
+*.pem
+*.key
+*.p12
+*.pfx
+progreso*.json
+informes*.json
+backups/
+.vscode/
+.idea/
+.DS_Store

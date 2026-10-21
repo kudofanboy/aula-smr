@@ -1,0 +1,371 @@
+/* =====================================================================
+   Animaciones y efectos. Todo está aquí para poder revisarlo o quitarlo de una vez.
+   Se apagan con "reducir movimiento" del sistema (regla global de estilos.css) o con el
+   interruptor del juego (data-animaciones="no").
+   ===================================================================== */
+
+/* ---------- Interruptor del juego ---------- */
+[data-animaciones='no'] *,
+[data-animaciones='no'] *::before,
+[data-animaciones='no'] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+.icono-btn.apagado svg {
+  opacity: 0.45;
+}
+
+/* ---------- Transiciones entre pantallas (View Transitions) ---------- */
+.barra {
+  view-transition-name: barra;
+}
+
+::view-transition-group(barra) {
+  animation-duration: 0s;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+
+html[data-nav='adelante']::view-transition-old(root) { animation-name: vt-sale-izquierda; }
+html[data-nav='adelante']::view-transition-new(root) { animation-name: vt-entra-derecha; }
+html[data-nav='atras']::view-transition-old(root) { animation-name: vt-sale-derecha; }
+html[data-nav='atras']::view-transition-new(root) { animation-name: vt-entra-izquierda; }
+html[data-nav='lateral']::view-transition-old(root) { animation-name: vt-sale-abajo; animation-duration: 0.22s; }
+html[data-nav='lateral']::view-transition-new(root) { animation-name: vt-entra-arriba; animation-duration: 0.45s; }
+
+@keyframes vt-entra-derecha { from { transform: translateX(10%); opacity: 0; filter: blur(8px); } }
+@keyframes vt-sale-izquierda { to { transform: translateX(-10%); opacity: 0; filter: blur(5px); } }
+@keyframes vt-entra-izquierda { from { transform: translateX(-10%); opacity: 0; filter: blur(8px); } }
+@keyframes vt-sale-derecha { to { transform: translateX(10%); opacity: 0; filter: blur(5px); } }
+@keyframes vt-entra-arriba { from { transform: translateY(22px); opacity: 0; } }
+@keyframes vt-sale-abajo { to { transform: translateY(-8px); opacity: 0; } }
+
+/* ---------- Entrada en cascada de las pantallas ---------- */
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(20px) scale(0.985); }
+}
+
+.panel-personal > :not(.rejilla-panel),
+.rejilla-panel > *,
+.pagina > *,
+.departamento > * {
+  animation: entrar 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+.panel-personal > :nth-child(1) { animation-delay: 0s; }
+.panel-personal > :nth-child(2) { animation-delay: 0.07s; }
+.panel-personal > :nth-child(3) { animation-delay: 0.14s; }
+.panel-personal > :nth-child(4) { animation-delay: 0.21s; }
+.panel-personal > :nth-child(5) { animation-delay: 0.28s; }
+.rejilla-panel > :nth-child(1) { animation-delay: 0.32s; }
+.rejilla-panel > :nth-child(2) { animation-delay: 0.4s; }
+.rejilla-panel > :nth-child(3) { animation-delay: 0.48s; }
+.rejilla-panel > :nth-child(4) { animation-delay: 0.56s; }
+.rejilla-panel > :nth-child(5) { animation-delay: 0.64s; }
+.pagina > :nth-child(1), .departamento > :nth-child(1) { animation-delay: 0s; }
+.pagina > :nth-child(2), .departamento > :nth-child(2) { animation-delay: 0.08s; }
+.pagina > :nth-child(3), .departamento > :nth-child(3) { animation-delay: 0.16s; }
+.pagina > :nth-child(4), .departamento > :nth-child(4) { animation-delay: 0.24s; }
+.pagina > :nth-child(n + 5), .departamento > :nth-child(n + 5) { animation-delay: 0.3s; }
+
+/* ---------- Mapa de la unidad: el camino se dibuja y los nodos aparecen en cadena ---------- */
+@keyframes revelar-trazo {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes nodo-pop {
+  0% { transform: scale(0.15); opacity: 0; }
+  65% { transform: scale(1.14); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes aparecer-texto {
+  from { opacity: 0; }
+}
+
+.camino-trazo {
+  animation: revelar-trazo 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.25s backwards;
+}
+
+.nodo-cara {
+  animation: nodo-pop 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 70ms + 0.35s);
+}
+
+.nodo-etiqueta {
+  animation: aparecer-texto 0.5s ease backwards;
+  animation-delay: calc(var(--i, 0) * 70ms + 0.55s);
+}
+
+/* ---------- Brillo que sigue al puntero ---------- */
+.tarjeta-panel,
+.puesto,
+.trabajo-cliente,
+.resumen-unidad,
+.guia-rapida,
+.tarjeta-resultado {
+  position: relative;
+  isolation: isolate;
+}
+
+.tarjeta-panel::after,
+.puesto::after,
+.trabajo-cliente::after,
+.resumen-unidad::after,
+.guia-rapida::after,
+.tarjeta-resultado::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--m, var(--acento)) 22%, transparent), transparent 65%);
+}
+
+.tarjeta-panel:hover::after,
+.puesto:hover::after,
+.trabajo-cliente:hover::after,
+.resumen-unidad:hover::after,
+.guia-rapida:hover::after,
+.tarjeta-resultado:hover::after {
+  opacity: 1;
+}
+
+.puesto {
+  overflow: hidden;
+}
+
+.puesto-red {
+  z-index: -1;
+  opacity: 0.55;
+  -webkit-mask-image: radial-gradient(90% 100% at 70% 40%, #000 30%, transparent 85%);
+  mask-image: radial-gradient(90% 100% at 70% 40%, #000 30%, transparent 85%);
+}
+
+.bienvenida {
+  position: relative;
+  overflow: hidden;
+}
+
+.bienvenida-red {
+  opacity: 0.7;
+}
+
+.bienvenida-caja {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Profundidad en la ilustración del puesto ---------- */
+.escena {
+  transform: perspective(1000px) rotateY(calc(var(--px, 0) * 3deg)) rotateX(calc(var(--py, 0) * -2.2deg));
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.escena .capa {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.escena .capa-lejos { transform: translate(calc(var(--px, 0) * -4px), calc(var(--py, 0) * -2.5px)); }
+.escena .capa-medio { transform: translate(calc(var(--px, 0) * 4px), calc(var(--py, 0) * 3px)); }
+.escena .capa-cerca { transform: translate(calc(var(--px, 0) * 10px), calc(var(--py, 0) * 6px)); }
+
+/* ---------- Botón principal con destello ---------- */
+.boton-jornada {
+  position: relative;
+  overflow: hidden;
+}
+
+.boton-jornada:not(:disabled)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 36%, oklch(1 0 0 / 0.3) 50%, transparent 64%);
+  transform: translateX(-120%);
+  animation: destello 5s ease-in-out 1.4s infinite;
+}
+
+@keyframes destello {
+  0%, 55% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+/* ---------- Entrada: arranque del sistema ---------- */
+.intro {
+  --acento: oklch(0.74 0.12 250);
+  --ok: oklch(0.76 0.14 155);
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: oklch(0.95 0.01 260);
+  cursor: pointer;
+  background:
+    radial-gradient(60% 55% at 50% 38%, color-mix(in oklab, var(--acento) 24%, oklch(0.15 0.02 260)), oklch(0.11 0.02 260) 72%);
+  clip-path: circle(150% at 50% 50%);
+}
+
+.intro.saliendo {
+  animation: intro-iris 0.85s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes intro-iris {
+  to { clip-path: circle(0% at 50% 50%); }
+}
+
+/* La cámara se acerca a las puertas de cristal del espacio ficticio durante toda la entrada. */
+.intro-foto {
+  position: absolute;
+  inset: -3%;
+  background-size: cover;
+  background-position: 62% 58%;
+  transform-origin: 66% 62%;
+  animation: intro-acercar 4.6s cubic-bezier(0.45, 0, 0.25, 1) forwards;
+}
+
+.intro-velo {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 60% at 50% 46%, oklch(0.1 0.03 260 / 0.78), oklch(0.1 0.03 260 / 0.35) 70%, oklch(0.1 0.03 260 / 0.55)),
+    linear-gradient(180deg, transparent 55%, oklch(0.1 0.03 260 / 0.7));
+}
+
+@keyframes intro-acercar {
+  from { transform: scale(1); }
+  to { transform: scale(1.7); }
+}
+
+.intro-centro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  text-align: center;
+}
+
+.intro-logo {
+  animation: intro-logo 1.1s cubic-bezier(0.2, 1.25, 0.4, 1) 0.1s backwards;
+}
+
+.intro-logo svg {
+  width: 88px;
+  height: 88px;
+  filter: drop-shadow(0 0 30px color-mix(in oklab, var(--acento) 80%, transparent));
+}
+
+.intro-logo .logo-fondo { fill: var(--acento); }
+.intro-logo .logo-rack { fill: oklch(0.14 0.02 260); }
+.intro-logo .logo-led { fill: var(--acento); }
+
+@keyframes intro-logo {
+  from { opacity: 0; transform: scale(0.35) rotate(-14deg); }
+}
+
+.intro-titulo {
+  margin: 0;
+  font-family: var(--f-titulo);
+  font-size: clamp(2.3rem, 7vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: oklch(0.97 0.01 260);
+}
+
+.intro-titulo b {
+  font-weight: 700;
+  color: var(--acento);
+}
+
+.intro-titulo span {
+  display: inline-block;
+  animation: intro-letra 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+@keyframes intro-letra {
+  from { opacity: 0; transform: translateY(18px); filter: blur(8px); }
+}
+
+.intro-consola {
+  min-height: 6.6em;
+  min-width: min(340px, 80vw);
+  font-family: var(--f-mono);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  text-align: left;
+  color: oklch(0.82 0.03 250);
+}
+
+.intro-linea {
+  display: flex;
+  white-space: nowrap;
+  animation: intro-aparece 0.01s linear backwards;
+}
+
+.intro-texto {
+  display: inline-block;
+  overflow: hidden;
+  width: calc(var(--n) * 1ch);
+  animation: intro-tipear 0.45s steps(var(--n), end) backwards;
+  animation-delay: inherit;
+}
+
+@keyframes intro-aparece {
+  from { opacity: 0; }
+}
+
+@keyframes intro-tipear {
+  from { width: 0; }
+}
+
+.intro-ok {
+  margin-left: 1.2ch;
+  font-weight: 700;
+  color: var(--ok);
+  animation: intro-aparece 0.01s linear backwards;
+}
+
+.intro-carga {
+  width: min(320px, 72vw);
+  height: 4px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: oklch(1 0 0 / 0.12);
+}
+
+.intro-carga > div {
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--acento), var(--ok));
+  box-shadow: 0 0 14px var(--acento);
+  animation: intro-barra 3.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+}
+
+@keyframes intro-barra {
+  from { transform: scaleX(0); }
+}
+
+.intro-saltar {
+  position: absolute;
+  bottom: 26px;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: oklch(0.8 0.02 260);
+  opacity: 0.55;
+  animation: intro-aparece 0.6s ease 1.5s backwards;
+}

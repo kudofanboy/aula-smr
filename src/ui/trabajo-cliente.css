@@ -1,0 +1,46 @@
+.trabajo-cliente { display: grid; grid-template-columns: 138px minmax(0,1fr); gap: 28px; align-items: center; margin: 22px 0; padding: 24px 30px; background: linear-gradient(115deg,var(--superficie),var(--acento-suave)); border: 1px solid var(--borde); border-radius: 22px; }
+.tc-contenido h2 { margin: 7px 0 9px; font-size: 1.35rem; letter-spacing: -.035em; }
+.tc-contenido p { margin: 0 0 14px; color: var(--texto-2); font-size: .85rem; }
+.tc-contenido small { display: block; color: var(--texto-3); font-size: .77rem; }
+.tc-ilustracion { position: relative; width: 128px; height: 122px; display: grid; place-items: center; background: var(--superficie); border: 1px solid var(--borde); border-radius: 24px; color: var(--acento-texto); box-shadow: var(--sombra); transform: rotate(-4deg); }
+.tc-documento { position: absolute; right: -10px; bottom: -8px; padding: 13px 10px; background: var(--superficie); border: 1px solid var(--borde); border-radius: 4px; color: var(--texto-3); font: 700 .48rem var(--f-mono); line-height: 1.8; transform: rotate(13deg); }
+.tc-trazo { position: absolute; inset: 11px; border: 1px dashed var(--borde-fuerte); border-radius: 18px; }
+.tc-sello { display: flex; align-items: center; gap: 9px; color: var(--m-texto); font: 700 .65rem var(--f-mono); letter-spacing: .04em; }
+.encargo-taller { max-width: 1120px; }
+.encargo-taller .cabecera-pagina { margin-bottom: 16px; }
+.encargo-taller .cabecera-pagina h1 { font-size: clamp(1.5rem,2.5vw,2rem); }
+.encargo-taller .correo-cliente { padding: 16px 22px; }
+.encargo-taller .correo-cliente p { margin: 9px 0 0; font-size: .85rem; line-height: 1.6; }
+.encargo-taller .pasos-encargo { margin: 16px 0; }
+.encargo-taller .decision-cliente > h2 { margin: 10px 0; font-size: 1.35rem; }
+.encargo-taller .decision-cliente > .mensaje-cliente { font-size: .95rem; margin: 9px 0; }
+.encargo-taller .decision-cliente { padding: 28px; }
+.encargo-taller .correo-cliente { border-left: 3px solid var(--m); background: linear-gradient(100deg,var(--m-suave),var(--superficie)); }
+.tc-confirmar { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+.tc-confirmar small { color: var(--texto-3); font-size: .75rem; max-width: 290px; }
+.inventario-elegido { font-size: .85rem; color: var(--texto-2); }
+@media(max-width:700px) {
+  .trabajo-cliente { grid-template-columns: 1fr; padding: 22px; gap: 18px; }
+  .tc-ilustracion { width: 82px; height: 70px; border-radius: 15px; }
+  .tc-ilustracion > svg { width: 32px; }
+  .tc-documento { padding: 5px 7px; }
+  .tc-contenido h2 { font-size: 1.15rem; }
+  .encargo-taller .decision-cliente { padding: 20px 12px; }
+  .tc-sello { display:none; }
+  .tc-confirmar .btn { width: 100%; justify-content:center; min-height:48px; }
+}
+
+/* ---------- Casos: explicación previa, datos ficticios y versiones ---------- */
+.explicacion-decision { margin: 14px 0; padding: 14px 16px; border-left: 4px solid var(--m, var(--acento)); border-radius: 0 12px 12px 0; background: var(--superficie-2); }
+.explicacion-decision b { display: inline-flex; align-items: center; gap: 6px; color: var(--m-texto, var(--acento-texto)); }
+.explicacion-decision p { margin: 6px 0 0; line-height: 1.6; }
+.datos-ficticios { margin: 14px 0; padding: 12px 14px; border: 1.5px dashed var(--borde-fuerte); border-radius: 12px; background: var(--superficie); }
+.datos-ficticios figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-weight: 700; }
+.datos-ficticios dl { display: grid; gap: 8px; margin: 10px 0 0; }
+.datos-ficticios dl > div { display: grid; grid-template-columns: minmax(7rem, auto) 1fr; gap: 10px; padding: 8px 10px; border-radius: 8px; background: var(--superficie-2); }
+.datos-ficticios dt { font-weight: 700; }
+.datos-ficticios dd { margin: 0; color: var(--texto-2); overflow-wrap: anywhere; }
+.sello-ficticio { display: inline-block; padding: 2px 8px; border-radius: 999px; background: color-mix(in oklab, var(--aviso) 18%, var(--superficie)); color: var(--texto); font-size: .75rem; font-weight: 700; }
+.correo-cliente .sello-ficticio { display: block; width: fit-content; margin-top: 10px; border-radius: 10px; font-weight: 600; }
+.nota-version { display: block; margin: 6px 0; padding: 8px 12px; border-left: 3px solid var(--acento); border-radius: 0 8px 8px 0; background: var(--superficie-2); font-size: .88rem; color: var(--texto-2); }
+@media (max-width: 520px) { .datos-ficticios dl > div { grid-template-columns: 1fr; gap: 2px; } }

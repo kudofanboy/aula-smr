@@ -1,0 +1,40 @@
+.demo-portada { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; padding: 26px 30px; margin-bottom: 22px; border-radius: 22px; background: var(--superficie); border: 1px solid var(--borde); box-shadow: var(--sombra); }
+.demo-intro { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-width: 0; }
+.demo-portada h1 { font-family: var(--f-titulo); margin: 0; font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.1; }
+.demo-lema { margin: 0; max-width: 60ch; color: var(--texto-2); font-size: 1.02rem; line-height: 1.5; }
+.demo-nota { display: inline-flex; align-items: center; gap: 8px; margin: 2px 0 0; padding: 6px 12px; border-radius: 999px; background: color-mix(in oklab, var(--aviso) 18%, var(--superficie)); border: 1px solid color-mix(in oklab, var(--aviso) 45%, var(--borde)); color: var(--texto); font-size: .85rem; font-weight: 650; }
+.demo-nota svg { color: var(--aviso-texto); flex: none; }
+.demo-acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.demo-mas { color: var(--texto-2); font-size: .9rem; }
+.demo-mas summary { padding: 4px 0; font-weight: 600; color: var(--acento-texto); }
+.demo-mas p { margin: 6px 0 0; max-width: 65ch; line-height: 1.6; }
+.demo-miniatura { width: clamp(260px, 30vw, 380px); margin: 0; padding: 12px 12px 8px; border: 1px solid var(--borde); border-radius: 16px; background: var(--superficie-2); }
+.demo-miniatura .esquema-nodos { margin: 0; }
+.demo-miniatura .dibujo { max-height: 170px; }
+.demo-miniatura figcaption { margin-top: 4px; color: var(--texto-3); font-size: .78rem; text-align: center; }
+.demo-recorrido-titulo { margin: 0 0 12px; font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-3); }
+.demo-recorrido { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 24px; }
+.demo-recorrido article { position: relative; display: flex; flex-direction: column; gap: 14px; margin: 0; }
+/* Flecha entre pasos: el recorrido se lee como una secuencia. */
+.demo-recorrido article:not(:last-child)::after { content: ''; position: absolute; top: 50%; right: -15px; z-index: 1; width: 12px; height: 12px; border-top: 3px solid var(--borde-fuerte); border-right: 3px solid var(--borde-fuerte); transform: translateY(-50%) rotate(45deg); }
+.demo-recorrido h2 { font-size: 1.2rem; margin: 0; }
+.demo-recorrido p { margin: 0; line-height: 1.65; }
+.demo-recorrido .btn { margin-top: auto; }
+.demo-recorrido small, .demo-docente small { display: block; color: var(--texto-2); line-height: 1.6; }
+.demo-numero { color: var(--acento-texto); font-size: .8rem; font-weight: 800; }
+.demo-fuente { color: var(--texto-2); font-size: .8rem; }
+.demo-docente > .panel { margin-bottom: 24px; }
+.demo-docente textarea { width: 100%; border: 1px solid var(--borde-fuerte); background: var(--superficie-2); color: var(--texto); padding: 14px; border-radius: 12px; font: inherit; line-height: 1.5; resize: vertical; }
+.demo-docente summary { cursor: pointer; padding: 10px 0; font-weight: 700; }
+.demo-cobertura { display: grid; gap: 10px; margin: 14px 0; }
+.demo-cobertura article { border-left: 3px solid var(--borde-fuerte); padding-left: 16px; }
+.demo-cobertura p { font-size: .85rem; color: var(--texto-2); }
+.informe-vista { max-height: 28rem; overflow: auto; white-space: pre-wrap; font: inherit; font-size: .85rem; line-height: 1.7; background: var(--superficie-2); border-radius: 12px; padding: 20px; overflow-wrap: anywhere; }
+.informe details { margin: 20px 0; }
+.informe summary { cursor: pointer; font-weight: 700; }
+.inicio-demostracion { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 24px; padding: 22px; border-radius: 16px; border: 1px solid var(--borde); background: var(--superficie); }
+.inicio-demostracion h2 { font-size: 1.05rem; margin: 0 0 6px; }
+.inicio-demostracion p { color: var(--texto-2); margin: 0; font-size: .85rem; }
+@media (max-width: 900px) { .demo-recorrido { grid-template-columns: 1fr; } .demo-recorrido article:not(:last-child)::after { display: none; } .demo-portada { grid-template-columns: 1fr; padding: 20px; } .demo-miniatura { display: none; } }
+@media (max-width: 600px) { .inicio-demostracion { flex-direction: column; align-items: stretch; } .demo-acciones, .demo-acciones .btn { width: 100%; } .demo-lema { font-size: .95rem; } }
+.demo-acciones a.btn { text-decoration: none; }

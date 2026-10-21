@@ -1,0 +1,192 @@
+{
+  "modulos": [
+    {
+      "id": "MME",
+      "nombre": "Montaje y mantenimiento de equipos",
+      "corto": "Montaje",
+      "icono": "cpu",
+      "tono": 50,
+      "planta": "Zona demo 1",
+      "unidades": [
+        {
+          "codigo": "DEMO",
+          "titulo": "Dispositivos y datos · demostración ficticia"
+        }
+      ]
+    },
+    {
+      "id": "SOM",
+      "nombre": "Sistemas operativos monopuesto",
+      "corto": "Sistemas",
+      "icono": "monitor",
+      "tono": 230,
+      "planta": "Zona demo 2",
+      "unidades": [
+        {
+          "codigo": "DEMO",
+          "titulo": "Servicios del sistema · demostración ficticia"
+        }
+      ]
+    },
+    {
+      "id": "REDES",
+      "nombre": "Redes locales",
+      "corto": "Redes",
+      "icono": "network",
+      "tono": 180,
+      "planta": "Zona demo 3",
+      "unidades": [
+        {
+          "codigo": "DEMO",
+          "titulo": "Una oficina conectada · demostración ficticia"
+        }
+      ]
+    },
+    {
+      "id": "AOF",
+      "nombre": "Aplicaciones ofimáticas",
+      "corto": "Ofimática",
+      "icono": "file-text",
+      "tono": 290,
+      "planta": "Zona demo 4",
+      "unidades": [
+        {
+          "codigo": "DEMO",
+          "titulo": "Un documento para compartir · demostración ficticia"
+        }
+      ]
+    },
+    {
+      "id": "ING",
+      "nombre": "Inglés profesional",
+      "corto": "Inglés",
+      "icono": "languages",
+      "tono": 100,
+      "planta": "Zona demo 5",
+      "unidades": [
+        {
+          "codigo": "DEMO",
+          "titulo": "Acciones de una interfaz · demostración ficticia"
+        }
+      ]
+    },
+    {
+      "id": "IPE",
+      "nombre": "Itinerario personal para la empleabilidad",
+      "corto": "Empleabilidad",
+      "icono": "briefcase-business",
+      "tono": 20,
+      "planta": "Zona demo 6",
+      "unidades": [
+        {
+          "codigo": "DEMO",
+          "titulo": "Comunicar una incidencia · demostración ficticia"
+        }
+      ]
+    }
+  ],
+  "profesorado": [
+    {
+      "id": "docente-demo-1",
+      "nombre": "Docente Demo 1 (ficticio)",
+      "correo": "docente-demo-1@example.org",
+      "modulos": [
+        "MME"
+      ],
+      "tutora": true,
+      "nota": "Identidad y correo ficticios. No contactar: ejemplo de interfaz.",
+      "revisado": "2030-01-01",
+      "fuentes": [
+        {
+          "titulo": "Datos inventados de demostración — kudofanboy",
+          "url": "https://example.org/demo-ficticia"
+        }
+      ]
+    },
+    {
+      "id": "docente-demo-2",
+      "nombre": "Docente Demo 2 (ficticio)",
+      "correo": "docente-demo-2@example.org",
+      "modulos": [
+        "SOM"
+      ],
+      "tutora": false,
+      "nota": "Identidad y correo ficticios. No contactar: ejemplo de interfaz.",
+      "revisado": "2030-01-01",
+      "fuentes": [
+        {
+          "titulo": "Datos inventados de demostración — kudofanboy",
+          "url": "https://example.org/demo-ficticia"
+        }
+      ]
+    },
+    {
+      "id": "docente-demo-3",
+      "nombre": "Docente Demo 3 (ficticio)",
+      "correo": "docente-demo-3@example.org",
+      "modulos": [
+        "REDES"
+      ],
+      "tutora": false,
+      "nota": "Identidad y correo ficticios. No contactar: ejemplo de interfaz.",
+      "revisado": "2030-01-01",
+      "fuentes": [
+        {
+          "titulo": "Datos inventados de demostración — kudofanboy",
+          "url": "https://example.org/demo-ficticia"
+        }
+      ]
+    },
+    {
+      "id": "docente-demo-4",
+      "nombre": "Docente Demo 4 (ficticio)",
+      "correo": "docente-demo-4@example.org",
+      "modulos": [
+        "AOF"
+      ],
+      "tutora": false,
+      "nota": "Identidad y correo ficticios. No contactar: ejemplo de interfaz.",
+      "revisado": "2030-01-01",
+      "fuentes": [
+        {
+          "titulo": "Datos inventados de demostración — kudofanboy",
+          "url": "https://example.org/demo-ficticia"
+        }
+      ]
+    },
+    {
+      "id": "docente-demo-5",
+      "nombre": "Docente Demo 5 (ficticio)",
+      "correo": "docente-demo-5@example.org",
+      "modulos": [
+        "ING"
+      ],
+      "tutora": false,
+      "nota": "Identidad y correo ficticios. No contactar: ejemplo de interfaz.",
+      "revisado": "2030-01-01",
+      "fuentes": [
+        {
+          "titulo": "Datos inventados de demostración — kudofanboy",
+          "url": "https://example.org/demo-ficticia"
+        }
+      ]
+    },
+    {
+      "id": "docente-demo-6",
+      "nombre": "Docente Demo 6 (ficticio)",
+      "correo": "docente-demo-6@example.org",
+      "modulos": [
+        "IPE"
+      ],
+      "tutora": false,
+      "nota": "Identidad y correo ficticios. No contactar: ejemplo de interfaz.",
+      "revisado": "2030-01-01",
+      "fuentes": [
+        {
+          "titulo": "Datos inventados de demostración — kudofanboy",
+          "url": "https://example.org/demo-ficticia"
+        }
+      ]
+    }
+  ]
+}

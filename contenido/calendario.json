@@ -1,0 +1,19 @@
+[
+  {
+    "id": "demo-cal-aviso",
+    "fecha": "2030-01-01",
+    "modulo": "GENERAL",
+    "tipo": "aviso",
+    "titulo": "Calendario ficticio de demostración",
+    "detalle": "Todas las fechas de esta demo son inventadas y no corresponden a ningún curso."
+  },
+  {
+    "id": "demo-cal-reto",
+    "fecha": "2030-01-15",
+    "hora": "12:00",
+    "modulo": "REDES",
+    "tipo": "examen",
+    "titulo": "Reto de ejemplo (ficticio)",
+    "detalle": "Evento inventado para mostrar el calendario; no hay evaluación real."
+  }
+]

@@ -1,0 +1,145 @@
+{
+  "id": "ING-DEMO",
+  "modulo": "ING",
+  "codigo": "DEMO",
+  "titulo": "Acciones de una interfaz · demostración ficticia",
+  "orden": 1,
+  "formato": 2,
+  "fuentes": [
+    {
+      "id": "demo-propia",
+      "titulo": "Contenido original de demostración — kudofanboy (CC BY 4.0)",
+      "ruta": "docs/DEMO-CONTENT.md",
+      "localizador": "apartado"
+    }
+  ],
+  "glosario": [],
+  "conceptos": [
+    {
+      "id": "demo-ingles",
+      "nombre": "Save, open y print",
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 7
+      },
+      "nivel_verdad": "simplificacion",
+      "requiere": [],
+      "objetivo": "Aplicar la idea de save, open y print a un caso pequeño.",
+      "descubrir": [
+        {
+          "tipo": "idea",
+          "titulo": "Save, open y print",
+          "texto": "En una interfaz en inglés, **save** significa guardar, **open** significa abrir y **print** significa imprimir. El texto del botón indica una acción, pero conviene comprobar también qué archivo y destino están seleccionados.",
+          "visual": {
+            "tipo": "emoji",
+            "emoji": "💬"
+          }
+        },
+        {
+          "tipo": "pregunta",
+          "pregunta": "Quieres conservar los cambios en un archivo. ¿Qué botón buscas?",
+          "opciones": [
+            "Save",
+            "Print"
+          ],
+          "correcta": 0,
+          "revelacion": "Save guarda los cambios; Print envía el documento a una impresora o a un destino de impresión."
+        }
+      ],
+      "clave": [
+        "En una interfaz en inglés, **save** significa guardar, **open** significa abrir y **print** significa imprimir. El texto del botón indica una acción, pero conviene comprobar también qué archivo y destino están seleccionados.",
+        "Save guarda los cambios; Print envía el documento a una impresora o a un destino de impresión."
+      ],
+      "verificado": true
+    }
+  ],
+  "ejercicios": [
+    {
+      "id": "demo-ing-pares",
+      "conceptos": [
+        "demo-ingles"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 7
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "emparejar",
+      "enunciado": "Relaciona cada acción con su traducción en este ejemplo.",
+      "pares": [
+        {
+          "a": "Save",
+          "b": "Guardar"
+        },
+        {
+          "a": "Open",
+          "b": "Abrir"
+        },
+        {
+          "a": "Print",
+          "b": "Imprimir"
+        }
+      ],
+      "explicacion": "Save conserva cambios, Open abre un archivo y Print inicia la impresión. Son acciones distintas aunque aparezcan en el mismo menú."
+    },
+    {
+      "id": "demo-ing-test",
+      "conceptos": [
+        "demo-ingles"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 7
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "test",
+      "enunciado": "¿Qué acción corresponde a Open?",
+      "opciones": [
+        "Abrir un archivo",
+        "Imprimir un archivo"
+      ],
+      "correcta": 0,
+      "explicacion": "Open permite abrir un archivo existente. Para imprimir se busca Print y se comprueba el destino antes de confirmar la operación."
+    },
+    {
+      "id": "demo-ing-vf",
+      "conceptos": [
+        "demo-ingles"
+      ],
+      "dificultad": 1,
+      "fuente": {
+        "doc": "demo-propia",
+        "pag": 7
+      },
+      "verificado": true,
+      "origen": "juego",
+      "motor": "vf",
+      "afirmacion": "Print significa guardar cambios en el original editable.",
+      "verdadero": false,
+      "explicacion": "Print inicia una operación de impresión, que puede tener varios destinos. Save es la acción que se busca para guardar cambios."
+    }
+  ],
+  "generadores": [],
+  "juegos": [
+    {
+      "id": "ing-demo-practica",
+      "titulo": "Práctica demo",
+      "descripcion": "Actividades originales; no corresponde a un curso real.",
+      "tipo": "practica",
+      "preguntas": 5
+    },
+    {
+      "id": "ing-demo-reto",
+      "titulo": "Reto demo",
+      "descripcion": "Tres decisiones sin relación con evaluaciones reales.",
+      "tipo": "examen",
+      "preguntas": 3,
+      "tiempo": 180
+    }
+  ],
+  "encargos": []
+}

@@ -1,0 +1,24 @@
+/* Un contenido y su siguiente acción; los apoyos aparecen cuando hacen falta. */
+.panel-sesion { max-width: 900px; }
+.objetivo-sesion { display: grid; gap: 4px; margin-bottom: 24px; padding: 14px 18px; border-left: 3px solid var(--mod, var(--acento)); background: var(--superficie-2); border-radius: 0 12px 12px 0; }
+.objetivo-sesion small { color: var(--texto-2); }
+.apoyo-aprendizaje { margin-top: 22px; border-top: 1px solid var(--borde); padding-top: 16px; }
+.apoyo-acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.apoyo-explicacion { margin-top: 14px; padding: 20px; border-radius: 14px; border: 1px solid var(--borde); background: var(--superficie); color: var(--texto); animation: apoyo-entrar 180ms ease-out; }
+.apoyo-explicacion p, .apoyo-resultado p { max-width: 68ch; line-height: 1.75; }
+.apoyo-explicacion small, .apoyo-resultado small { display: block; color: var(--texto-2); line-height: 1.6; }
+.apoyo-explicacion .btn { margin-top: 18px; }
+.apoyo-variante { margin-top: 20px; padding: 24px; border: 1px solid var(--borde-fuerte); border-radius: 16px; background: var(--superficie); color: var(--texto); }
+.apoyo-resultado { margin-top: 20px; padding: 16px; border-left: 3px solid var(--aviso); background: var(--superficie-2); }
+.apoyo-resultado.bien { border-color: var(--ok); }
+.correccion .apoyo-acciones .btn { color: var(--texto); }
+.correccion .apoyo-acciones { padding: 10px; border-radius: 12px; background: var(--superficie); }
+.cuerpo-paso, .apoyo-variante, .correccion { animation: apoyo-entrar 180ms ease-out; }
+@keyframes apoyo-entrar { from { opacity: 0; transform: translateY(6px); } }
+@media (max-width: 600px) { .apoyo-variante, .apoyo-explicacion { padding: 16px; } .apoyo-acciones > .btn { flex: 1 1 160px; } .correccion-pie .fila-botones { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .cuerpo-paso, .apoyo-variante, .correccion, .apoyo-explicacion { animation: none; } }
+[data-animaciones='no'] :is(.cuerpo-paso, .apoyo-variante, .correccion, .apoyo-explicacion) { animation: none; }
+.apoyo-concepto + .apoyo-concepto { margin-top: 12px; }
+.apoyo-concepto > b { display: block; margin-top: 6px; }
+.apoyo-explicacion .titulo-idea { display: block; margin-top: 12px; }
+.apoyo-explicacion .lista-rica { margin: 8px 0 0; }
